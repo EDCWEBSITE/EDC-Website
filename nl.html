@@ -1,0 +1,840 @@
+<!-- NETTED BYTES NEWSLETTER PAGE — GGSIPU EDC -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    :root {
+        --navy: #0d2a4e;
+        --blue: #1a5fa8;
+        --gold: #c9a84c;
+        --gold2: #e2c278;
+        --white: #fff;
+        --light: #f7f9fc;
+        --text: #1a2332;
+        --muted: #65758b;
+        --shadow: 0 16px 45px rgba(13, 42, 78, .13);
+        --radius: 22px;
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    body {
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        color: var(--text);
+        background: var(--white)
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit
+    }
+
+    .nb-page {
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(180deg, #fff 0%, #f8fbff 45%, #fff 100%)
+    }
+
+    .nb-container {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 22px
+    }
+
+    /* WHITE PROFESSIONAL HEADER */
+    .nb-header {
+        background: #fff;
+        border-bottom: 1px solid #e8edf4;
+        box-shadow: 0 4px 18px rgba(13, 42, 78, .06);
+    }
+
+    .nb-header-inner {
+        min-height: 104px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .nb-header-text {
+        text-align: center
+    }
+
+    .nb-uni {
+        font-family: 'Playfair Display', serif;
+        color: var(--navy);
+        font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .nb-campus {
+        color: var(--blue);
+        font-weight: 700;
+        margin-top: 4px;
+        letter-spacing: .04em;
+    }
+
+    .nb-sub {
+        font-size: .78rem;
+        color: var(--muted);
+        margin-top: 4px;
+    }
+
+    .nb-pill {
+        display: inline-flex;
+        margin-top: 9px;
+        padding: 5px 14px;
+        border-radius: 999px;
+        background: #f5efe0;
+        color: #8b6a12;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    /* HERO */
+    .nb-hero {
+        padding: 72px 0 60px
+    }
+
+    .nb-hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr .95fr;
+        gap: 38px;
+        align-items: center;
+    }
+
+    .nb-kicker {
+        color: var(--gold);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .18em;
+        font-size: .76rem;
+        margin-bottom: 14px;
+    }
+
+    .nb-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.4rem, 5vw, 5rem);
+        line-height: 1;
+        color: var(--navy);
+        margin: 0 0 18px;
+    }
+
+    .nb-title span {
+        color: var(--blue)
+    }
+
+    .nb-desc {
+        font-size: 1.04rem;
+        color: var(--muted);
+        line-height: 1.75;
+        max-width: 620px;
+    }
+
+    .nb-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 28px
+    }
+
+    .nb-btn {
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 800;
+        transition: .3s ease;
+    }
+
+    .nb-btn-primary {
+        background: var(--navy);
+        color: #fff;
+        box-shadow: 0 10px 24px rgba(13, 42, 78, .22)
+    }
+
+    .nb-btn-primary:hover {
+        background: var(--gold);
+        color: var(--navy);
+        transform: translateY(-3px)
+    }
+
+    .nb-btn-light {
+        background: #fff;
+        color: var(--navy);
+        border: 1px solid #dce5f0
+    }
+
+    .nb-btn-light:hover {
+        border-color: var(--gold);
+        color: #8b6a12
+    }
+
+    .nb-cover {
+        position: relative;
+        min-height: 420px;
+        border-radius: 32px;
+        background:
+            radial-gradient(circle at 25% 20%, rgba(226, 194, 120, .35), transparent 35%),
+            linear-gradient(135deg, var(--navy), #164477 58%, #236bb7);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        padding: 36px;
+        color: #fff;
+    }
+
+    .nb-cover::after {
+        content: "";
+        position: absolute;
+        inset: 24px;
+        border: 1px solid rgba(255, 255, 255, .22);
+        border-radius: 24px;
+    }
+
+    .nb-mag-label {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        padding: 7px 13px;
+        background: rgba(255, 255, 255, .12);
+        border: 1px solid rgba(255, 255, 255, .22);
+        border-radius: 999px;
+        font-size: .72rem;
+        text-transform: uppercase;
+        letter-spacing: .14em;
+    }
+
+    .nb-cover h2 {
+        position: relative;
+        z-index: 1;
+        font-family: 'Playfair Display', serif;
+        font-size: 3.2rem;
+        line-height: 1;
+        margin: 90px 0 12px;
+    }
+
+    .nb-cover p {
+        position: relative;
+        z-index: 1;
+        color: rgba(255, 255, 255, .78);
+        line-height: 1.7
+    }
+
+    .nb-cover-icon {
+        position: absolute;
+        right: 28px;
+        bottom: 22px;
+        font-size: 8rem;
+        color: rgba(255, 255, 255, .08);
+    }
+
+    /* ISSUE SECTION */
+    .nb-section {
+        padding: 52px 0 82px
+    }
+
+    .nb-section-head {
+        text-align: center;
+        margin-bottom: 38px
+    }
+
+    .nb-section-label {
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: .18em;
+        font-size: .75rem;
+        font-weight: 800;
+    }
+
+    .nb-section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        color: var(--navy);
+        margin: 10px 0;
+    }
+
+    .nb-section-sub {
+        color: var(--muted);
+        line-height: 1.7
+    }
+
+    .nb-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .nb-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 8px 28px rgba(13, 42, 78, .08);
+        transition: .35s ease;
+    }
+
+    .nb-card:hover {
+        transform: translateY(-7px);
+        box-shadow: var(--shadow)
+    }
+
+    .nb-card-cover {
+        height: 240px;
+        background: linear-gradient(135deg, #0d2a4e, #1a5fa8);
+        padding: 24px;
+        color: #fff;
+        position: relative;
+    }
+
+    .nb-card-cover::after {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 18px;
+    }
+
+    .nb-issue-tag {
+        position: relative;
+        z-index: 1;
+        color: var(--gold2);
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .16em;
+    }
+
+    .nb-card-cover h3 {
+        position: relative;
+        z-index: 1;
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin: 54px 0 0;
+    }
+
+    .nb-card-body {
+        padding: 22px
+    }
+
+    .nb-card-body p {
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: .92rem;
+        margin: 0 0 18px
+    }
+
+    .nb-read {
+        width: 100%;
+        border: none;
+        background: var(--navy);
+        color: #fff;
+        border-radius: 14px;
+        padding: 13px 16px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: .3s ease;
+    }
+
+    .nb-read:hover {
+        background: var(--gold);
+        color: var(--navy)
+    }
+
+    /* MODAL READER */
+    .nb-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 22, 40, .86);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .nb-modal.active {
+        display: flex
+    }
+
+    .nb-reader {
+        width: min(1100px, 96vw);
+        height: min(760px, 92vh);
+        background: #fff;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, .38);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nb-reader-top {
+        height: 58px;
+        background: #fff;
+        border-bottom: 1px solid #e5eaf1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+    }
+
+    .nb-reader-title {
+        font-weight: 800;
+        color: var(--navy);
+    }
+
+    .nb-close {
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        cursor: pointer;
+        color: var(--navy);
+    }
+
+    .nb-frame {
+        flex: 1;
+        width: 100%;
+        border: 0;
+        background: #f5f5f5;
+    }
+
+    /* FOOTER THEME */
+    .site-footer {
+        background: #1a2332;
+        color: rgba(255, 255, 255, .75)
+    }
+
+    .footer-top {
+        padding: 64px 0 48px;
+        border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+        gap: 48px
+    }
+
+    .footer-logo-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px
+    }
+
+    .footer-logo-circle {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(201, 168, 76, .15);
+        border: 1.5px solid rgba(201, 168, 76, .4);
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .footer-logo-circle span {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--gold)
+    }
+
+    .footer-brand-name {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.3
+    }
+
+    .footer-brand-sub {
+        font-size: .72rem;
+        color: rgba(255, 255, 255, .45)
+    }
+
+    .footer-about {
+        font-size: .83rem;
+        line-height: 1.72;
+        margin-bottom: 20px
+    }
+
+    .social-links {
+        display: flex;
+        gap: 10px
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, .65)
+    }
+
+    .social-link:hover {
+        background: var(--gold);
+        color: var(--navy)
+    }
+
+    .footer-heading {
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(201, 168, 76, .2)
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0
+    }
+
+    .footer-links li {
+        margin-bottom: 10px
+    }
+
+    .footer-links a {
+        font-size: .84rem;
+        color: rgba(255, 255, 255, .62)
+    }
+
+    .footer-links a:hover {
+        color: var(--gold)
+    }
+
+    .contact-item {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 14px;
+        font-size: .83rem
+    }
+
+    .contact-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: rgba(201, 168, 76, .12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        flex-shrink: 0
+    }
+
+    .contact-text {
+        line-height: 1.6;
+        color: rgba(255, 255, 255, .62)
+    }
+
+    .footer-map {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, .1)
+    }
+
+    .footer-map iframe {
+        width: 100%;
+        height: 175px;
+        border: 0;
+        filter: grayscale(30%)
+    }
+
+    .footer-bottom {
+        padding: 22px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap
+    }
+
+    .footer-copy,
+    .footer-made {
+        font-size: .75rem;
+        color: rgba(255, 255, 255, .38)
+    }
+
+    .footer-made span {
+        color: var(--gold)
+    }
+
+    .nb-logo {
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1.5px solid #d9e2ef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 6px;
+        box-shadow: 0 6px 18px rgba(13, 42, 78, .08);
+    }
+
+    .nb-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: scale(0.82);
+    }
+
+    @media(max-width:900px) {
+        .nb-header-inner {
+            grid-template-columns: 1fr;
+            text-align: center;
+            justify-items: center
+        }
+
+        .nb-hero-grid,
+        .footer-grid {
+            grid-template-columns: 1fr
+        }
+
+        .nb-grid {
+            grid-template-columns: 1fr
+        }
+
+        .nb-cover {
+            min-height: 360px
+        }
+
+    }
+</style>
+
+<div class="nb-page">
+
+    <header class="nb-header">
+        <div class="nb-container nb-header-inner">
+            <div class="nb-logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9r6dAlsnnrfxxhCrl4zodqbTia8UfXPDQg&s"
+                    alt="GGSIPU Logo">
+            </div>
+            <div class="nb-header-text">
+                <div class="nb-uni">Guru Gobind Singh Indraprastha University</div>
+                <div class="nb-campus">East Delhi Campus</div>
+                <div class="nb-sub">Surajmal Vihar, Delhi-110032</div>
+            </div>
+            <div class="nb-logo">
+                <img src="https://raw.githubusercontent.com/https-ritwick/Reporting-Management-System/refs/heads/main/static/img/Logo/new_logo_withoutbg.png"
+                    alt="GGSIPU Logo">
+            </div>
+        </div>
+    </header>
+
+    <section class="nb-hero">
+        <div class="nb-container nb-hero-grid">
+            <div>
+                <div class="nb-kicker">Newsletter / Magazine of EDC</div>
+                <h1 class="nb-title">Netted <span>Bytes</span></h1>
+                <p class="nb-desc">
+                    A digital newsletter capturing the academic achievements, student activities,
+                    campus events, innovation stories, creative expressions, and institutional
+                    highlights of GGSIPU East Delhi Campus.
+                </p>
+                <div class="nb-actions">
+                    <button class="nb-btn nb-btn-primary"
+                        onclick="openNewsletter('https://drive.google.com/file/d/1TigivSjnOv5cxKx9auJMj4_xrvePLySp/view?usp=sharing','Netted Bytes — Latest Edition')">
+                        <i class="fas fa-book-open"></i> Read Latest Edition
+                    </button>
+                    <a class="nb-btn nb-btn-light" href="#issues">
+                        <i class="fas fa-layer-group"></i> View All Issues
+                    </a>
+                </div>
+            </div>
+
+            <div class="nb-cover">
+                <span class="nb-mag-label">Official EDC Magazine</span>
+                <h2>Netted<br>Bytes</h2>
+                <p>Stories, achievements, innovations and campus moments — presented in a modern digital reading
+                    experience.</p>
+                <i class="fas fa-newspaper nb-cover-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="nb-section" id="issues">
+        <div class="nb-container">
+            <div class="nb-section-head">
+                <div class="nb-section-label">Digital Editions</div>
+                <h2 class="nb-section-title">Read Netted Bytes</h2>
+                <p class="nb-section-sub">Click on any edition to open it in a full-screen magazine reader.</p>
+            </div>
+
+            <div class="nb-grid">
+                <div class="nb-card">
+                    <div class="nb-card-cover">
+                        <div class="nb-issue-tag">LATEST EDITION</div>
+                        <h3>Edition 003 | October 2025</h3>
+                    </div>
+                    <div class="nb-card-body">
+                        <p> Released during Elysian The Annual Technical of East Delhi Campus. Edition 003
+                            is a special issue celebrating the vibrant spirit of EDC through flagship events, student
+                            achievements, cultural performances, technical activities, and memorable moments from
+                            October 2025.</p>
+                        <button class="nb-read"
+                            onclick="openNewsletter('https://drive.google.com/file/d/1TigivSjnOv5cxKx9auJMj4_xrvePLySp/view?usp=sharing','Netted Bytes — Edition 003')">
+                            Open Flipbook <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="nb-card">
+                    <div class="nb-card-cover">
+                        <div class="nb-issue-tag">SECOND EDITION</div>
+                        <h3>Edition 002 | April 2024</h3>
+                    </div>
+                    <div class="nb-card-body">
+                        <p>Edition 002 highlights another exciting phase of growth at East Delhi Campus, covering
+                            student-led initiatives, technical and cultural events, academic activities, workshops, and
+                            memorable campus moments from April 2024.</p>
+                        <button class="nb-read"
+                            onclick="openNewsletter('https://drive.google.com/file/d/1zg3mPUd2F4USVAZWNuaG4WgFZweHNFPA/view','Netted Bytes — Edition 002')">
+                            Open Flipbook <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="nb-card">
+                    <div class="nb-card-cover">
+                        <div class="nb-issue-tag">FIRST EDITION</div>
+                        <h3>Edition 001 | March 2023</h3>
+                    </div>
+                    <div class="nb-card-body">
+                        <p> Edition 001 reflects the spirit of innovation and student engagement at East Delhi Campus,
+                            bringing together key campus developments, student achievements, technical activities, and
+                            memorable highlights from March 2023.</p>
+                        <button class="nb-read"
+                            onclick="openNewsletter('https://drive.google.com/file/d/1vgdhUEbKInq5i1I7_Zjwd9Gk_4I7F0MJ/view','Netted Bytes — Edition 001 | March 2023')">
+                            Open Flipbook <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="nb-container footer-grid">
+                <div>
+                    <div class="footer-logo-wrap">
+                        <div class="nb-logo">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9r6dAlsnnrfxxhCrl4zodqbTia8UfXPDQg&s"
+                                alt="GGSIPU Logo">
+                        </div>
+                        <div>
+                            <div class="footer-brand-name">GGSIPU<br>East Delhi Campus</div>
+                            <div class="footer-brand-sub">Surajmal Vihar, Delhi</div>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        USAR | USDI | USAP | USMC
+                    </p>
+                    <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/ggsipuedc/"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="social-link" href="https://www.linkedin.com/in/ggsipuedc/"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a class="social-link" href="https://x.com/GGSIPU_EDC"><i class="fab fa-x-twitter"></i></a>
+                        <a class="social-link" href="https://ipu.ac.in" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                    <div class="footer-counter">
+                        <span class="counter-label">
+                            <i class="fas fa-chart-line"></i> Website Visitors
+                        </span>
+
+                        <img src="https://hitwebcounter.com/counter/counter.php?page=8661208&style=0005&nbdigits=6&type=page&initCount=210820"
+                            title="Website Visitor Counter" alt="Website Visitor Counter" border="0" />
+                    </div>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="https://sites.google.com/view/ggsipuedc/home">Home</a></li>
+                        <li><a href="https://ipu.ac.in/schools.php">University Schools</a></li>
+                        <li><a href="https://sites.google.com/view/ggsipuedc/students/students-welfare">Students'
+                                Welfare</a></li>
+                        <li><a href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">Photo
+                                Gallery</a></li>
+                        <li><a href="https://ipu.ac.in/notices.php">Notices</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Contact Us</div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-text">GGSIPU East Delhi Campus,<br>Surajmal Vihar,<br>Delhi-110032</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text">directorincharge_edc@ipu.ac.in</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Find Us</div>
+                    <div class="footer-map">
+                        <iframe
+                            src="https://www.google.com/maps?q=GGSIPU%20East%20Delhi%20Campus%2C%20Surajmal%20Vihar%2C%20Delhi&output=embed"
+                            width="100%" height="250" style="border:0; border-radius:12px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nb-container footer-bottom">
+            <p class="footer-copy">© 2026 Guru Gobind Singh Indraprastha University, East Delhi Campus. All Rights
+                Reserved.</p>
+            <p class="footer-made">Designed & Maintained for <span>GGSIPU East Delhi Campus</span></p>
+        </div>
+    </footer>
+</div>
+
+<div class="nb-modal" id="newsletterModal">
+    <div class="nb-reader">
+        <div class="nb-reader-top">
+            <div class="nb-reader-title" id="readerTitle">Netted Bytes</div>
+            <button class="nb-close" onclick="closeNewsletter()"><i class="fas fa-times"></i></button>
+        </div>
+        <iframe class="nb-frame" id="newsletterFrame" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+    function getDrivePreviewUrl(link) {
+        const match = link.match(/\/d\/([^/]+)/) || link.match(/[?&]id=([^&]+)/);
+        if (match && match[1]) return "https://drive.google.com/file/d/" + match[1] + "/preview";
+        return link;
+    }
+    function openNewsletter(link, title) {
+        document.getElementById("readerTitle").innerText = title || "Netted Bytes";
+        document.getElementById("newsletterFrame").src = getDrivePreviewUrl(link);
+        document.getElementById("newsletterModal").classList.add("active");
+    }
+    function closeNewsletter() {
+        document.getElementById("newsletterModal").classList.remove("active");
+        document.getElementById("newsletterFrame").src = "";
+    }
+</script>
