@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDP on Cyber Security and Blockchain Technology</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a', /* slate-900 */
+                        lightBlue: '#f0f9ff', /* sky-50 */
+                        brandBlue: '#0284c7', /* sky-600 */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Gradient text for dark background */
+        .text-gradient-dark {
+            background: linear-gradient(to right, #38bdf8, #e0f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brandBlue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-bold text-navy truncate flex items-center">
+                    <i class="fa-solid fa-shield-halved text-brandBlue mr-2 text-xl"></i> FDP 2026
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#about" class="text-slate-600 hover:text-brandBlue transition">About</a>
+                    <a href="#agenda" class="text-slate-600 hover:text-brandBlue transition">Agenda</a>
+                    <a href="#organizers" class="text-slate-600 hover:text-brandBlue transition">Organizers</a>
+                    <a href="#faq" class="text-slate-600 hover:text-brandBlue transition">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section with Background Image -->
+    <header class="relative pt-16 pb-20 overflow-hidden bg-navy" id="about">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Ensure to name your selected image as 'hero-bg.jpg' and place it in the same folder -->
+            <img src="hero-bg.jpg" alt="USAR Campus" class="w-full h-full object-cover opacity-40 mix-blend-overlay" onerror="this.src='https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80';"/>
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/70 to-navy/95"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in">
+            
+            <!-- Logos Organized as Requested -->
+            <div class="flex flex-col items-center mb-10">
+                <!-- MeitY Logo Top Center -->
+                <div class="h-20 w-40 bg-white rounded-lg shadow-lg flex items-center justify-center p-2 mb-6 transform hover:scale-105 transition">
+                    <span class="text-sm font-bold text-slate-400 text-center">MeitY<br/>Logo</span>
+                </div>
+                
+                <!-- Other 3 Logos Below -->
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="h-16 w-32 bg-white rounded-lg shadow-lg flex items-center justify-center p-2 transform hover:scale-105 transition">
+                        <span class="text-xs font-bold text-slate-400 text-center">C-DAC<br/>Logo</span>
+                    </div>
+                    <div class="h-16 w-32 bg-white rounded-lg shadow-lg flex items-center justify-center p-2 transform hover:scale-105 transition">
+                        <span class="text-xs font-bold text-slate-400 text-center">GGSIPU<br/>Logo</span>
+                    </div>
+                    <div class="h-16 w-32 bg-white rounded-lg shadow-lg flex items-center justify-center p-2 transform hover:scale-105 transition">
+                        <span class="text-xs font-bold text-slate-400 text-center">ISEA<br/>Logo</span>
+                    </div>
+                </div>
+            </div>
+
+            <span class="inline-block py-1 px-4 rounded-full bg-blue-500/20 border border-blue-400/30 text-sky-300 text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
+                One Week Faculty Development Program
+            </span>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                Cyber Security and <br class="hidden md:block"/> <span class="text-gradient-dark">Blockchain Technology</span>
+            </h1>
+
+            <p class="mt-4 text-base md:text-lg text-slate-300 max-w-2xl mx-auto mb-10 font-medium">
+                Under the ISEA Project Phase III
+            </p>
+
+            <!-- Glassmorphism Cards for Details -->
+            <div class="glass-card rounded-2xl p-6 md:p-8 max-w-3xl mx-auto text-left shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="mt-1 bg-white/10 p-3 rounded-lg text-sky-400 border border-white/10">
+                            <i class="fa-regular fa-calendar-days fa-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400 font-medium uppercase tracking-wide">Dates (5 Days)</p>
+                            <p class="font-bold text-white text-lg">15th - 19th June 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="mt-1 bg-white/10 p-3 rounded-lg text-sky-400 border border-white/10">
+                            <i class="fa-solid fa-location-dot fa-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400 font-medium uppercase tracking-wide">Venue</p>
+                            <p class="font-bold text-white text-lg">USAR, GGSIP University</p>
+                            <p class="text-sm text-slate-300">East Delhi Campus</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-sm text-slate-400 font-medium mb-3 uppercase tracking-wide">Organized by:</p>
+                    <ul class="text-base font-semibold text-white space-y-2">
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-sky-400 mr-3"></i>Centre for Development of Advanced Computing (C-DAC), Noida</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-sky-400 mr-3"></i>University School of Automation & Robotics, GGSIPU, Delhi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Registration Callout -->
+            <div class="mt-12">
+                <div class="inline-flex flex-col items-center">
+                    <span class="px-10 py-4 border border-transparent text-lg font-bold rounded-full text-navy bg-sky-400 shadow-lg shadow-sky-400/30 hover:bg-sky-300 transition cursor-pointer">
+                        Registration is Free
+                    </span>
+                    <p class="mt-3 text-sm font-medium text-slate-300 tracking-wide">(Under the ISEA Initiative)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agenda Table Section -->
+    <section class="py-16 bg-white relative border-t border-slate-200" id="agenda">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-navy">Program Schedule</h2>
+                <div class="w-16 h-1 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-500">
+                    5 days of immersive learning and hands-on lab sessions.
+                </p>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200 hide-scroll">
+                <table class="w-full text-left border-collapse min-w-[900px]">
+                    <thead>
+                        <tr class="bg-navy text-white text-sm">
+                            <th class="p-4 border-b border-navy/20 font-bold whitespace-nowrap w-[120px]">Date / Day</th>
+                            <th class="p-4 border-b border-navy/20 font-bold w-[25%]">Session 1<br><span class="text-xs font-normal text-sky-300 mt-1 inline-block">10:00 am - 11:20 am</span></th>
+                            <th class="p-4 border-b border-navy/20 font-bold text-center w-[80px] bg-slate-800">Tea Break<br><span class="text-xs font-normal text-sky-300 mt-1 inline-block">11:20 - 11:40</span></th>
+                            <th class="p-4 border-b border-navy/20 font-bold w-[25%]">Session 2<br><span class="text-xs font-normal text-sky-300 mt-1 inline-block">11:40 am - 1:00 pm</span></th>
+                            <th class="p-4 border-b border-navy/20 font-bold text-center w-[80px] bg-slate-800">Lunch<br><span class="text-xs font-normal text-sky-300 mt-1 inline-block">1:00 - 2:00</span></th>
+                            <th class="p-4 border-b border-navy/20 font-bold w-[25%]">Lab Session<br><span class="text-xs font-normal text-sky-300 mt-1 inline-block">2:00 pm - 4:00 pm</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <!-- Day 1 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition">
+                            <td class="p-4 bg-slate-50 border-r border-slate-100 align-top">
+                                <div class="font-bold text-navy text-base">15/06/2026</div>
+                                <div class="text-slate-500 font-medium">Monday</div>
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base">Inauguration Ceremony</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-mug-hot mb-1 block text-lg"></i>Tea
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Understanding cyber threats and its mitigation</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Rekha Saraswat, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-utensils mb-1 block text-lg"></i>Lunch
+                            </td>
+                            <td class="p-4 align-top">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Vulnerability scanning, network scanning and sniffing</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Manvi, CDAC</p>
+                            </td>
+                        </tr>
+
+                        <!-- Day 2 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition">
+                            <td class="p-4 bg-slate-50 border-r border-slate-100 align-top">
+                                <div class="font-bold text-navy text-base">16/06/2026</div>
+                                <div class="text-slate-500 font-medium">Tuesday</div>
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Understanding Network threats and identifying weak point in network infrastructure</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Rekha / Ms Prabha, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-mug-hot mb-1 block text-lg"></i>Tea
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Network security solutions: Firewalls and IDS/IPS</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Mr Prateek Saraswat, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-utensils mb-1 block text-lg"></i>Lunch
+                            </td>
+                            <td class="p-4 align-top">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Hands On - real time cyber-attack on networks</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Mr Prateek Saraswat, CDAC</p>
+                            </td>
+                        </tr>
+
+                        <!-- Day 3 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition">
+                            <td class="p-4 bg-slate-50 border-r border-slate-100 align-top">
+                                <div class="font-bold text-navy text-base">17/06/2026</div>
+                                <div class="text-slate-500 font-medium">Wednesday</div>
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Digital Forensics</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Kanti Singh, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-mug-hot mb-1 block text-lg"></i>Tea
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Cryptographic Protocols in Cybersecurity</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Dr Ashish Joshi, GGSIPU</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-utensils mb-1 block text-lg"></i>Lunch
+                            </td>
+                            <td class="p-4 align-top">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Hands On - Session on Cyber Forensic tools and hardware</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-building text-brandBlue mr-1"></i> Cyint Technologies</p>
+                            </td>
+                        </tr>
+
+                        <!-- Day 4 -->
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition">
+                            <td class="p-4 bg-slate-50 border-r border-slate-100 align-top">
+                                <div class="font-bold text-navy text-base">18/06/2026</div>
+                                <div class="text-slate-500 font-medium">Thursday</div>
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Introduction to Web App, attacks and countermeasures</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Prabha Kumari, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-mug-hot mb-1 block text-lg"></i>Tea
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">OS Int and Mobile Security</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Mr Shubham Tripathi, CDAC</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-utensils mb-1 block text-lg"></i>Lunch
+                            </td>
+                            <td class="p-4 align-top">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Hands On - Google Dorks and Web application security</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Ms Prabha / Mr Shubham, CDAC</p>
+                            </td>
+                        </tr>
+
+                        <!-- Day 5 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-4 bg-slate-50 border-r border-slate-100 align-top">
+                                <div class="font-bold text-navy text-base">19/06/2026</div>
+                                <div class="text-slate-500 font-medium">Friday</div>
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Enhancing Web Security deploying BLAST Blockchain Algorithm</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Prof Rahul Johari, GGSIPU</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-mug-hot mb-1 block text-lg"></i>Tea
+                            </td>
+                            <td class="p-4 align-top border-r border-slate-100">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Reverse Engineering: The backbone of Modern Cybersecurity</p>
+                                <p class="text-xs text-slate-500 flex items-center"><i class="fa-solid fa-user-circle text-brandBlue mr-1"></i> Dr Pankaj Saxena, Ewandz</p>
+                            </td>
+                            <td class="p-4 bg-slate-50 text-center text-slate-400 font-medium italic border-r border-slate-100 align-middle">
+                                <i class="fa-solid fa-utensils mb-1 block text-lg"></i>Lunch
+                            </td>
+                            <td class="p-4 align-top">
+                                <p class="font-semibold text-slate-800 text-base mb-2">Evaluation, Feedback and Valedictory Ceremony</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-4 md:hidden"><i class="fa-solid fa-arrows-left-right mr-1"></i> Swipe horizontally to view full schedule</p>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="py-12 bg-slate-50 fade-in border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-navy mb-8 text-center">Key Highlights</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="flex flex-col p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-user-tie text-brandBlue text-2xl mb-4 bg-blue-50 p-3 rounded-lg w-fit"></i>
+                    <p class="text-sm text-slate-700 font-medium">Industry and academia experts covering latest trends in cyber security.</p>
+                </div>
+                <div class="flex flex-col p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-laptop-code text-brandBlue text-2xl mb-4 bg-blue-50 p-3 rounded-lg w-fit"></i>
+                    <p class="text-sm text-slate-700 font-medium">Practical sessions on advanced topics including network security & ethical hacking.</p>
+                </div>
+                <div class="flex flex-col p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-certificate text-brandBlue text-2xl mb-4 bg-blue-50 p-3 rounded-lg w-fit"></i>
+                    <p class="text-sm text-slate-700 font-medium">Prestigious certificate upon successful completion. Attendance is mandatory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizers Section -->
+    <section class="py-16 bg-white border-t border-slate-200" id="organizers">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-navy">Organizing Committee</h2>
+                <div class="w-16 h-1 bg-brandBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Patrons -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-navy mb-6 text-center">Patrons</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm">
+                        <div class="w-20 h-20 bg-slate-200 rounded-full mb-4 flex items-center justify-center text-slate-400 overflow-hidden shadow-inner ring-4 ring-white">
+                            <i class="fa-solid fa-user fa-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg leading-tight">Prof. (Dr.) Mahesh Verma</h4>
+                        <p class="text-sm text-brandBlue font-semibold mt-2 mb-1">Chief Patron</p>
+                        <p class="text-xs text-slate-500">Hon'ble Vice Chancellor</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm">
+                        <div class="w-20 h-20 bg-slate-200 rounded-full mb-4 flex items-center justify-center text-slate-400 overflow-hidden shadow-inner ring-4 ring-white">
+                            <i class="fa-solid fa-user fa-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg leading-tight">Prof. Arvinder Kaur</h4>
+                        <p class="text-sm text-brandBlue font-semibold mt-2 mb-1">Patron</p>
+                        <p class="text-xs text-slate-500">Director (Academics)[EDC] & Dean, USAR</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm">
+                        <div class="w-20 h-20 bg-slate-200 rounded-full mb-4 flex items-center justify-center text-slate-400 overflow-hidden shadow-inner ring-4 ring-white">
+                            <i class="fa-solid fa-user fa-xl"></i>
+                        </div>
+                        <h4 class="font-bold text-navy text-lg leading-tight">Dr Kamal Pathak</h4>
+                        <p class="text-sm text-brandBlue font-semibold mt-2 mb-1">Patron</p>
+                        <p class="text-xs text-slate-500">Registrar</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coordinators -->
+            <div>
+                <h3 class="text-xl font-bold text-navy mb-6 text-center">FDP Coordinators</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- CDAC -->
+                    <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition">
+                        <h4 class="font-bold text-brandBlue text-lg mb-4 flex items-center"><i class="fa-solid fa-building text-sm mr-2 opacity-70"></i> CDAC, NOIDA</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-semibold text-navy">Ms Rekha Saraswat</p>
+                                <p class="text-xs text-slate-500 mb-1">Scientist 'E'</p>
+                                <a href="mailto:rekhasaraswat@cdac.in" class="text-xs text-brandBlue hover:underline flex items-center"><i class="fa-solid fa-envelope mr-1 opacity-70"></i> rekhasaraswat@cdac.in</a>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-navy">Ms Kanti Singh</p>
+                                <p class="text-xs text-slate-500 mb-1">Scientist 'E'</p>
+                                <a href="mailto:kantisingh@cdac.in" class="text-xs text-brandBlue hover:underline flex items-center"><i class="fa-solid fa-envelope mr-1 opacity-70"></i> kantisingh@cdac.in</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GGSIPU -->
+                    <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition">
+                        <h4 class="font-bold text-brandBlue text-lg mb-4 flex items-center"><i class="fa-solid fa-building-columns text-sm mr-2 opacity-70"></i> GGSIPU, Delhi</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-semibold text-navy">Prof. Rahul Johari</p>
+                                <a href="mailto:rahul@ipu.ac.in" class="text-xs text-brandBlue hover:underline flex items-center mt-1"><i class="fa-solid fa-envelope mr-1 opacity-70"></i> rahul@ipu.ac.in</a>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-navy">Dr Atul Tripathi</p>
+                                <a href="mailto:atul.usar@ipu.ac.in" class="text-xs text-brandBlue hover:underline flex items-center mt-1"><i class="fa-solid fa-envelope mr-1 opacity-70"></i> atul.usar@ipu.ac.in</a>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-navy">Dr Ashish Joshi</p>
+                                <a href="mailto:ashish.j@ipu.ac.in" class="text-xs text-brandBlue hover:underline flex items-center mt-1"><i class="fa-solid fa-envelope mr-1 opacity-70"></i> ashish.j@ipu.ac.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200" id="faq">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-navy">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-navy flex justify-between items-center focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq('faq1')">
+                        Who should attend this FDP?
+                        <i class="fa-solid fa-plus text-brandBlue transition-transform duration-300" id="icon-faq1"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-sm text-slate-600 hidden bg-white" id="faq1">
+                        Faculty members and research scholars from Universities/Colleges.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-navy flex justify-between items-center focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq('faq2')">
+                        Is there any registration fee?
+                        <i class="fa-solid fa-plus text-brandBlue transition-transform duration-300" id="icon-faq2"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-sm text-slate-600 hidden bg-white" id="faq2">
+                        No, the registration is completely free under the ISEA Initiative.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-navy flex justify-between items-center focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq('faq3')">
+                        Will I receive a certificate?
+                        <i class="fa-solid fa-plus text-brandBlue transition-transform duration-300" id="icon-faq3"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-sm text-slate-600 hidden bg-white" id="faq3">
+                        Yes, you will receive a prestigious certificate upon successful completion of the FDP. Attendance is mandatory in all sessions.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-navy flex justify-between items-center focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq('faq5')">
+                        Who can I contact for support?
+                        <i class="fa-solid fa-plus text-brandBlue transition-transform duration-300" id="icon-faq5"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-sm text-slate-600 hidden bg-white" id="faq5">
+                        You can reach out to the FDP coordinators via their email addresses listed in the Organizers section.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Map -->
+    <footer class="bg-navy text-slate-300 py-16 border-t border-slate-800 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Info -->
+                <div>
+                    <h3 class="text-white font-bold text-2xl mb-4">Cyber Security & Blockchain Technology FDP</h3>
+                    <p class="text-sm mb-8 text-slate-400 max-w-md leading-relaxed">
+                        Organized by Centre for Development of Advanced Computing (C-DAC), Noida & University School of Automation & Robotics (USAR), GGSIPU, Delhi under ISEA Project Phase III.
+                    </p>
+                    
+                    <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 mb-8">
+                        <h4 class="text-white font-semibold mb-3 flex items-center">
+                            <i class="fa-solid fa-location-dot text-brandBlue mr-2"></i> Venue Address
+                        </h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            University School of Automation & Robotics (USAR)<br/>
+                            Guru Gobind Singh Indraprastha University (GGSIPU) East Delhi Campus<br/>
+                            Surajmal Vihar, Delhi - 110092
+                        </p>
+                    </div>
+
+                    <p class="text-xs text-slate-500">&copy; 2026 GGSIPU & C-DAC. All rights reserved.</p>
+                </div>
+
+                <!-- Google Map -->
+                <div class="w-full h-80 lg:h-full min-h-[320px] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-800 relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.569970977465!2d77.30058867623307!3d28.672591675643194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb17d09228eb%3A0xc609fb4cc4e650c8!2sGuru%20Gobind%20Singh%20Indraprastha%20University%20(East%20Delhi%20Campus)!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        class="absolute inset-0 w-full h-full"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth reveal on scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+
+        // Toggle FAQ
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+                icon.classList.add('rotate-90');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+                icon.classList.remove('rotate-90');
+            }
+        }
+    </script>
+</body>
+</html>
