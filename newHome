@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GGSIPU East Delhi Campus — Official Website</title>
+
+    <!-- ═══════════════════════════════════════
+       FONTS — restricted set: Open Sans, Montserrat, Playfair Display,
+       Cambria, Calibri, Times New Roman (Cambria/Calibri/Times New Roman
+       are system fonts, no webfont import needed)
+  ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- ═══════════════════════════════════════
+       CDNs
+  ═══════════════════════════════════════ -->
+    <!-- Swiper.js (hero carousel) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- AOS (kept minimal — used only for a single, restrained fade-in) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ══════════════════════════════════════
+       DESIGN TOKENS
+       Palette: deep institutional navy retained as the primary,
+       the previous gold accent replaced with a restrained steel-teal
+       accent that reads as official rather than decorative.
+    ══════════════════════════════════════ */
+        :root {
+            /* Core navy family (unchanged institutional identity) */
+            --navy: #0b2545;
+            --navy-mid: #123362;
+            --navy-deep: #071a33;
+
+            /* Accent — steel teal, replaces the previous gold */
+            --accent: #2f6f6a;
+            --accent-dark: #234f4c;
+            --accent-light: #6fa39e;
+            --accent-tint: #eaf2f1;
+
+            /* Interactive blue */
+            --blue: #1a5fa8;
+            --blue-light: #2b7de9;
+
+            /* Neutrals */
+            --paper: #f6f6f4;
+            --white: #ffffff;
+            --grey-1: #f1f2f4;
+            --grey-2: #dfe2e7;
+            --grey-3: #8b95a3;
+            --text-dark: #1b2430;
+            --text-mid: #45505f;
+
+            /* Elevation — quieter than before */
+            --shadow-sm: 0 1px 3px rgba(11, 37, 69, .08), 0 1px 2px rgba(11, 37, 69, .04);
+            --shadow-md: 0 4px 16px rgba(11, 37, 69, .10);
+            --shadow-lg: 0 10px 30px rgba(11, 37, 69, .14);
+
+            /* Restrained radius scale */
+            --radius-sm: 4px;
+            --radius: 6px;
+            --radius-lg: 8px;
+
+            --transition: all .25s ease;
+
+            /* Type families */
+            --font-display: 'Playfair Display', Cambria, Georgia, serif;
+            --font-heading: 'Montserrat', Calibri, Arial, sans-serif;
+            --font-body: 'Open Sans', Calibri, Arial, sans-serif;
+            --font-formal: Cambria, 'Times New Roman', Georgia, serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* Visible keyboard focus everywhere — accessibility floor */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       PAGE LOADER — simplified, no spin theatrics
+    ══════════════════════════════════════ */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--navy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            transition: opacity .4s ease, visibility .4s ease;
+        }
+
+        #page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(255, 255, 255, .18);
+            border-top-color: var(--accent-light);
+            border-radius: 50%;
+            animation: spin .9s linear infinite;
+        }
+
+        .loader-text {
+            color: rgba(255, 255, 255, .65);
+            font-family: var(--font-heading);
+            font-size: .75rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ══════════════════════════════════════
+       SECTION HELPERS
+    ══════════════════════════════════════ */
+        section {
+            position: relative;
+        }
+
+        .section-pad {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+            max-width: 640px;
+        }
+
+        .divider {
+            width: 44px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 16px 0 32px;
+        }
+
+        /* Shared button style — used sparingly and consistently */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: .03em;
+            padding: 11px 22px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--navy);
+            color: var(--navy);
+            background: transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-solid {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-solid:hover {
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+        }
+
+        /* ══════════════════════════════════════
+       ① INSTITUTIONAL HEADER
+    ══════════════════════════════════════ */
+        .inst-header {
+            background: white;
+            border-bottom: 3px solid var(--accent);
+            padding: 16px 0;
+        }
+
+        .inst-header .container {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .header-logo {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .08);
+            border: 1.5px solid rgba(255, 255, 255, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+        }
+
+        .header-logo .logo-placeholder {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+        }
+
+        .header-center {
+            text-align: center;
+        }
+
+        .header-uni-name {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: clamp(.98rem, 2vw, 1.42rem);
+            font-weight: 700;
+            color: skyblue;
+            letter-spacing: .01em;
+            line-height: 1.3;
+        }
+
+        .header-campus-name {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: clamp(.78rem, 1.4vw, .96rem);
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: .05em;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .header-address {
+            font-size: .74rem;
+            color: rgba(255, 255, 255, .55);
+            margin-top: 4px;
+            letter-spacing: .01em;
+        }
+
+        .header-schools {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .school-badge {
+            font-family: var(--font-heading);
+            font-size: .62rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border: 1px solid rgba(255, 255, 255, .28);
+            border-radius: 3px;
+            color: rgba(255, 255, 255, .8);
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════
+       ② HERO CAROUSEL (Swiper)
+    ══════════════════════════════════════ */
+        .hero-carousel {
+            position: relative;
+        }
+
+        .hero-swiper {
+            width: 100%;
+            height: clamp(300px, 52vw, 580px);
+        }
+
+        .hero-slide {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--navy-deep);
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    rgba(7, 26, 51, .8) 0%,
+                    rgba(7, 26, 51, .45) 55%,
+                    rgba(7, 26, 51, .2) 100%);
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 9%;
+            left: 6%;
+            max-width: 560px;
+            color: var(--white);
+        }
+
+        .slide-tag {
+            font-family: var(--font-heading);
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slide-tag::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--accent-light);
+        }
+
+        .slide-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3.6vw, 2.7rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .slide-desc {
+            font-family: var(--font-body);
+            font-size: clamp(.8rem, 1.2vw, .98rem);
+            opacity: .85;
+            line-height: 1.65;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 42px !important;
+            height: 42px !important;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: .8rem !important;
+            color: white;
+        }
+
+        .swiper-pagination-bullet {
+            width: 7px !important;
+            height: 7px !important;
+            background: rgba(255, 255, 255, .5) !important;
+            opacity: 1 !important;
+            border-radius: 50% !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--accent-light) !important;
+            width: 22px !important;
+            border-radius: 4px !important;
+        }
+
+        /* ══════════════════════════════════════
+       NOTICE SECTION — carousel + latest notices panel
+       Highest-priority redesign per brief
+    ══════════════════════════════════════ */
+        .notice-section {
+            background: var(--paper);
+            padding: 56px 0;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .notice-section-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .notice-section-head h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2vw, 1.7rem);
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .notice-section-head .section-label {
+            margin-bottom: 4px;
+        }
+
+        .notice-layout {
+            display: grid;
+            grid-template-columns: 1.55fr 1fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        /* ── Carousel ───────────────────────── */
+        .notice-carousel {
+            position: relative;
+            background: var(--navy);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 100%;
+            min-height: 240px;
+        }
+
+        .notice-track-viewport {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .notice-track {
+            display: flex;
+            height: 100%;
+            transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .notice-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            display: flex;
+        }
+
+        .notice-slide-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            padding: 40px 64px 40px 40px;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .notice-slide-card:hover,
+        .notice-slide-card:focus-visible {
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .notice-slide-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+        }
+
+        .notice-badge-new {
+            background: var(--accent);
+            color: var(--white);
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        .notice-slide-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            font-weight: 600;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        .notice-slide-date {
+            font-family: var(--font-body);
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .notice-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            color: var(--accent-light);
+            margin-top: 4px;
+            width: fit-content;
+        }
+
+        .notice-read-more i {
+            transition: transform .2s ease;
+        }
+
+        .notice-slide-card:hover .notice-read-more i {
+            transform: translateX(4px);
+        }
+
+        .notice-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .25);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 3;
+        }
+
+        .notice-nav-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .notice-nav-btn.prev {
+            left: 12px;
+        }
+
+        .notice-nav-btn.next {
+            right: 12px;
+        }
+
+        .notice-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 40px;
+            display: flex;
+            gap: 6px;
+            z-index: 3;
+        }
+
+        .notice-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .35);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: var(--transition);
+        }
+
+        .notice-dot[aria-current="true"] {
+            background: var(--accent-light);
+            width: 18px;
+            border-radius: 3px;
+        }
+
+        /* ── Latest notices panel ───────────── */
+        .latest-notices-panel {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .latest-notices-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .latest-notices-head h3 {
+            font-family: var(--font-heading);
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--navy);
+        }
+
+        .latest-notices-list {
+            list-style: none;
+            flex: 1;
+        }
+
+        .latest-notice-item {
+            border-bottom: 1px solid var(--grey-1);
+        }
+
+        .latest-notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .latest-notice-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 13px 4px;
+            transition: var(--transition);
+            border-radius: var(--radius-sm);
+        }
+
+        .latest-notice-link:hover,
+        .latest-notice-link:focus-visible {
+            background: var(--accent-tint);
+            padding-left: 10px;
+        }
+
+        .latest-notice-icon {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-tint);
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .68rem;
+            margin-top: 2px;
+        }
+
+        .latest-notice-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .latest-notice-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .latest-notice-title {
+            font-family: var(--font-body);
+            font-size: .87rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .latest-notice-link:hover .latest-notice-title {
+            color: var(--accent-dark);
+        }
+
+        .latest-notice-date {
+            font-size: .74rem;
+            color: var(--grey-3);
+            margin-top: 3px;
+            font-family: var(--font-body);
+        }
+
+        .notice-mini-new {
+            background: var(--accent);
+            color: var(--white);
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            padding: 1px 6px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .view-all-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--grey-1);
+            font-family: var(--font-heading);
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            color: var(--navy);
+            transition: var(--transition);
+        }
+
+        .view-all-link:hover {
+            color: var(--accent-dark);
+        }
+
+        @media (max-width: 900px) {
+            .notice-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .notice-carousel {
+                min-height: 210px;
+            }
+
+            .notice-slide-card {
+                padding: 32px 56px 32px 24px;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       ③ ABOUT SECTION
+    ══════════════════════════════════════ */
+        .about-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img-wrap {
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            background: var(--navy);
+        }
+
+        .about-img-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--navy);
+            color: white;
+            padding: 18px 22px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            min-width: 116px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .about-img-badge .badge-num {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+        }
+
+        .about-img-badge .badge-lbl {
+            font-family: var(--font-heading);
+            font-size: .68rem;
+            letter-spacing: .06em;
+            color: rgba(255, 255, 255, .7);
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .stat-item {
+            background: var(--paper);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-item .stat-val {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .stat-item .stat-lbl {
+            font-family: var(--font-body);
+            font-size: .78rem;
+            color: var(--grey-3);
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        /* ══════════════════════════════════════
+       ④ SCHOOLS SECTION
+    ══════════════════════════════════════ */
+        .schools-section {
+            padding: 80px 0;
+            background: var(--paper);
+        }
+
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .school-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .school-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--grey-2);
+        }
+
+        .school-card-top {
+            height: 4px;
+            background: var(--navy);
+        }
+
+        .school-card:hover .school-card-top {
+            background: var(--accent);
+        }
+
+        .school-card-body {
+            padding: 26px 26px 30px;
+        }
+
+        .school-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 16px;
+            background: var(--navy);
+        }
+
+        .school-abbr {
+            font-family: var(--font-heading);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .school-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .school-desc {
+            font-family: var(--font-body);
+            font-size: .87rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .school-programs {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .school-programs li {
+            font-family: var(--font-body);
+            font-size: .72rem;
+            font-weight: 600;
+            padding: 4px 11px;
+            border-radius: var(--radius-sm);
+            background: var(--grey-1);
+            color: var(--text-mid);
+            transition: var(--transition);
+        }
+
+        .school-card:hover .school-programs li {
+            background: var(--accent-tint);
+            color: var(--accent-dark);
+        }
+
+        /* ══════════════════════════════════════
+       ⑤ CAMPUS HIGHLIGHTS
+    ══════════════════════════════════════ */
+        .highlights-section {
+            padding: 80px 0;
+            background: var(--navy);
+        }
+
+        .highlights-section .section-title {
+            color: var(--white);
+        }
+
+        .highlights-section .section-label {
+            color: var(--accent-light);
+        }
+
+        .highlights-section .section-label::before {
+            background: var(--accent-light);
+        }
+
+        .highlights-section .section-sub {
+            color: rgba(255, 255, 255, .62);
+        }
+
+        .highlights-section .divider {
+            background: var(--accent-light);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 48px;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: var(--radius);
+            padding: 26px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            background: rgba(255, 255, 255, .08);
+            border-color: rgba(111, 163, 158, .5);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(111, 163, 158, .12);
+            border: 1px solid rgba(111, 163, 158, .35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 1.25rem;
+            color: var(--accent-light);
+        }
+
+        .highlight-title {
+            font-family: var(--font-heading);
+            font-size: .84rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .9);
+            line-height: 1.35;
+        }
+
+        /* ══════════════════════════════════════
+       ⑥ STUDENT LIFE
+    ══════════════════════════════════════ */
+        .student-life-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 48px;
+        }
+
+        .life-card {
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .life-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .life-card-img {
+            height: 160px;
+            background: var(--navy);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .life-img-icon {
+            font-size: 2.1rem;
+            color: rgba(255, 255, 255, .35);
+        }
+
+        .life-card-body {
+            padding: 20px 22px 24px;
+        }
+
+        .life-card-label {
+            font-family: var(--font-heading);
+            font-size: .66rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .life-card-title {
+            font-family: var(--font-display);
+            font-size: 1.04rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .life-card-desc {
+            font-family: var(--font-body);
+            font-size: .83rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        /* ══════════════════════════════════════
+       ⑦ QUICK ACCESS
+    ══════════════════════════════════════ */
+        .quick-access-section {
+            padding: 80px 0;
+            background: var(--paper);
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 48px;
+        }
+
+        .quick-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 28px 18px;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--grey-2);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .quick-card:hover {
+            border-color: var(--navy);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quick-card:hover .quick-icon {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .quick-card:hover .quick-label {
+            color: var(--navy);
+        }
+
+        .quick-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--grey-1);
+            border: 1px solid var(--grey-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--navy);
+            transition: var(--transition);
+        }
+
+        .quick-label {
+            font-family: var(--font-heading);
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* ══════════════════════════════════════
+       ⑧ FOOTER
+    ══════════════════════════════════════ */
+        .site-footer {
+            background: var(--navy-deep);
+            color: rgba(255, 255, 255, .72);
+        }
+
+        .footer-top {
+            padding: 60px 0 44px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+            gap: 44px;
+        }
+
+        .footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.footer-logo-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff; /* Solid white background to ensure transparency issues don't hide the logo */
+    border: 1px solid rgba(111, 163, 158, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden; /* Ensures the image fits neatly inside the circle */
+}
+
+/* Added styling for the image inside the circle */
+.footer-logo-circle img {
+    width: 80%; /* Adjust size so it doesn't touch the borders */
+    height: 80%;
+    object-fit: contain; /* Keeps the logo proportions correct */
+}
+
+.footer-logo-circle span {
+    font-family: var(--font-display);
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--accent-light);
+}
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: .94rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .footer-brand-sub {
+            font-family: var(--font-body);
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .45);
+            letter-spacing: .03em;
+        }
+
+        .footer-about {
+            font-family: var(--font-body);
+            font-size: .83rem;
+            line-height: 1.72;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .65);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-family: var(--font-body);
+            font-size: .84rem;
+            color: rgba(255, 255, 255, .6);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .footer-links a::before {
+            content: '›';
+            color: var(--accent-light);
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: .83rem;
+        }
+
+        .contact-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: var(--radius-sm);
+            background: rgba(111, 163, 158, .1);
+            border: 1px solid rgba(111, 163, 158, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .68rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .contact-text {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .footer-map {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .1);
+            margin-top: 8px;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 165px;
+            border: none;
+            display: block;
+            filter: grayscale(35%);
+        }
+        .website-visitor-counter {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .counter-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: #ffffff;
+        padding: 12px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border: 1px solid #eaeaea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .counter-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+    }
+
+    .counter-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(128, 0, 0, 0.08); /* Soft maroon tint to match university aesthetic */
+        color: #800000;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .counter-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .counter-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #666666;
+        font-weight: 600;
+    }
+
+    .counter-badge {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+    }
+
+    .counter-badge img {
+        height: 22px; /* Smoothly scales down standard hitwebcounter graphic for a cleaner UI look */
+        width: auto;
+        display: block;
+    }
+
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-family: var(--font-formal);
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .4);
+            line-height: 1.6;
+        }
+
+        .footer-made {
+            font-family: var(--font-body);
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .3);
+        }
+
+        .footer-made span {
+            color: var(--accent-light);
+        }
+
+        /* ══════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════ */
+        #back-top {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .88rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        #back-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-top:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .highlights-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .about-img-wrap {
+                display: none;
+            }
+
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .student-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-pad {
+                padding: 60px 0;
+            }
+
+            .inst-header .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                justify-items: center;
+            }
+
+            .header-logo:last-child {
+                display: none;
+            }
+
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .student-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .notice-slide-card {
+                padding: 28px 48px 28px 20px;
+            }
+
+            .notice-dots {
+                left: 20px;
+            }
+        }
+        .site-header {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .logo-container {
+            display: inline-block;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.01);
+        }
+
+        .site-logo {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .know-more-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #800000; /* Matching a standard maroon university theme color */
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .know-more-btn:hover {
+        background-color: #a00000;
+        transform: translateY(-2px);
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+       PAGE LOADER
+  ══════════════════════════════════════ -->
+    <div id="page-loader">
+        <div class="loader-logo"></div>
+        <p class="loader-text">GGSIPU East Delhi Campus</p>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       BACK TO TOP
+  ══════════════════════════════════════ -->
+    <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ══════════════════════════════════════
+       ① INSTITUTIONAL HEADER
+  ══════════════════════════════════════ -->
+     <header class="site-header">
+        <div class="logo-container">
+            <a href="#" aria-label="Guru Gobind Singh Indraprastha University Home">
+                <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/crop_landscape.png?raw=true" alt="Guru Gobind Singh Indraprastha University Logo" class="site-logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+       ② HERO CAROUSEL
+  ══════════════════════════════════════ -->
+    <section class="hero-carousel">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide1">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-tag">Official Website</div>
+                        <h1 class="slide-title">Welcome to<br>East Delhi Campus, GGSIPU</h1>
+                        <p class="slide-desc">Shaping tomorrow's leaders through innovation,<br>technology, design, and
+                            research excellence.</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide2">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-tag"></div>
+                        <h1 class="slide-title">USDI @ 17th Toy Biz International B2B Exhibition</h1>
+                    </div>
+                </div>
+
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide3">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-tag"></div>
+                        <h1 class="slide-title">FDP on Cyber Security and Blockchain Technology</h1>
+                    </div>
+                </div>
+
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide6">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">Degree Distribution Ceremony - 2026</h1>
+                    </div>
+                </div>
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide4">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">Elysian 2025</h1>
+                    </div>
+                </div>
+
+                <div class="swiper-slide hero-slide" data-hero-bg="heroSlide5">
+                    <div class="slide-bg"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <div class="slide-tag">Campus Life</div>
+                        <h1 class="slide-title">Students' Welfare, Student Clubs &amp; Activities</h1>
+                        <p class="slide-desc">Srijan clubs, technical societies, and cultural<br>events that go beyond
+                            the classroom.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    
+
+    <!-- ══════════════════════════════════════
+       ③ ABOUT
+  ══════════════════════════════════════ -->
+    <section class="about-section section-pad" id="about">
+        <div class="container">
+            <div class="about-grid">
+
+                <div class="about-img-wrap" data-aos="fade-up">
+                    <div class="about-img-main" style="display:flex;align-items:center;justify-content:center;">
+                        <img data-asset="aboutCampus" alt="East Delhi Campus" class="about-img-main">
+                    </div>
+                    <div class="about-img-badge">
+                        <div class="badge-num">2021</div>
+                        <div class="badge-lbl">Est. Year</div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up">
+                    <div class="section-label">About Us</div>
+                    <h2 class="section-title">GGSIPU East Delhi Campus</h2>
+                    <div class="divider"></div>
+                    <p class="section-sub" style="margin-bottom:18px;">
+                        East Delhi Campus of Guru Gobind Singh Indraprastha University is committed to world-class
+                        learning and holistic student development. Located in Surajmal Vihar, Delhi, The GGS Indraprastha University-East Campus is committed to providing students with a world-class learning experience, fostering their holistic development. This exemplary campus seamlessly blends aesthetics and technology. As India embraces the fourth Industrial Revolution, the university has taken proactive steps by establishing two new Schools of Studies at the East Campus in Surajmal Vihar, New Delhi. <br> 
+                    </p>
+                    <p class="section-sub" style="margin-bottom:32px;">
+                        Designed to support emerging academic disciplines aligned with Industry 4.0, East Campus is home to four
+                        specialized schools — University School of Automation & Robotics, Design & Innovation, Architecture & Planning and Mass Comunication — each driving excellence in their respective
+                        fields. The campus champions interdisciplinary collaboration, research-driven pedagogy, and
+                        industry integration.
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-val">4</div>
+                            <div class="stat-lbl">Schools</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val">15+</div>
+                            <div class="stat-lbl">Programs Offered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val">100+</div>
+                            <div class="stat-lbl">Faculty Members</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-val">3000+</div>
+                            <div class="stat-lbl">Students Enrolled</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       ④ SCHOOLS
+  ══════════════════════════════════════ -->
+    <section class="schools-section" id="schools">
+        <div class="container">
+            <div style="text-align:center;" data-aos="fade-up">
+                <div class="section-label" style="justify-content:center;">University Schools</div>
+                <h2 class="section-title">University Schools at East Delhi Campus</h2>
+                <div class="divider" style="margin:16px auto 0;"></div>
+            </div>
+
+            <div class="schools-grid">
+
+                <div class="school-card" data-aos="fade-up">
+                    <div class="school-card-top"></div>
+                    <div class="school-card-body">
+                        <div class="school-abbr">USAR</div>
+                        <div class="school-name">University School of Automation &amp; Robotics</div>
+                        <p class="school-desc">
+                            The school offers the following programs: B.Tech-M.Tech (Dual Degree) in Artificial Intelligence & Data Science/ Artificial Intelligence & Machine Learning/ Industrial Internet of Thimgs/ Automation & Robotics, PG-Diploma in Cyber Security, Cyber Disaster & Blockchain Technology
+                        </p>
+                        <ul class="school-programs">
+                            <li>AI &amp; Data Science</li>
+                            <li>AI &amp; Machine Learning</li>
+                            <li>Industrial IoT</li>
+                            <li>Automation &amp; Robotics</li>
+                        </ul>
+                        <a href="https://ipu.ac.in/usar/" target="_blank" class="know-more-btn">Know More</a>
+                    </div>
+                </div>
+
+                <div class="school-card" data-aos="fade-up">
+                    <div class="school-card-top"></div>
+                    <div class="school-card-body">
+                        <div class="school-abbr">USDI</div>
+                        <div class="school-name">University School of Design &amp; Innovation</div>
+                        <p class="school-desc">
+                            It is a  unique institution to provide Design Education, rooted in values, that responds to social context, improves the quality of life, and prepares thought leaders to address emerging global needs
+                        </p>
+                        <ul class="school-programs">
+                            <li>Bachelor of Design</li>
+                            <li>Master of Design</li>
+                            <li>Ph.D.</li>
+                            <li>Industrial Design</li>
+                            <li>Interaction Design</li>
+                            <li>Interior Design</li>
+                        </ul>
+                        <a href="https://ipu.ac.in/usdi/" target="_blank" class="know-more-btn">Know More</a>
+                    </div>
+                </div>
+
+                <div class="school-card" data-aos="fade-up">
+                    <div class="school-card-top"></div>
+                    <div class="school-card-body">
+                        <div class="school-abbr">USAP</div>
+                        <div class="school-name">University School of Architecture &amp; Planning</div>
+                        <p class="school-desc">
+                            The school envisions to evolve as a Centre of academic excellence. It plans to develop a synergy between various conventional concepts, theories and applications of architectural and the contemporary challenges in the area of Urban and Regional planning, Building Management, Technology and Ecology. Thus minimizing risk and enhancing safety with focus on real life issues of Habitat management.
+                        </p>
+                        <ul class="school-programs">
+                            <li>B.Arch</li>
+                            <li>M.Arch</li>
+                            <li>M.Plan</li>
+                            <li>Ph.D.</li>
+                        </ul>
+                        <a href="https://ipu.ac.in/usap/" target="_blank" class="know-more-btn">Know More</a>
+                    </div>
+                </div>
+
+                <div class="school-card" data-aos="fade-up">
+                    <div class="school-card-top"></div>
+                    <div class="school-card-body">
+                        <div class="school-abbr">USMC</div>
+                        <div class="school-name">University School of Mass Communication</div>
+                        <p class="school-desc">
+                            The University School of Mass Communication (USMC) serves as a pioneering force in media education, research, and digital training. Established initially as the University Centre for Media Studies in 2006, it transitioned to a fully-fledged school in 2010, marking a significant step forward in advancing mass communication studies.
+                        </p>
+                        <ul class="school-programs">
+                            <li>BA (Journalism & Mass Communication)</li>
+                            <li>MA (Mass Communication)</li>
+                            <li>Ph.D.</li>
+                        </ul>
+                        <a href="https://ipu.ac.in/usmc/" target="_blank" class="know-more-btn">Know More</a>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="notice-section" id="notices">
+        <div class="container">
+            <div class="notice-section-head">
+                <div>
+                    <div class="section-label">Announcements</div>
+                    <h2>Notices/Circulars &amp; Infromation</h2>
+                </div>
+            </div>
+
+
+                <!-- Latest notices panel -->
+                <div class="latest-notices-panel" aria-label="Latest notices list">
+                    <div class="latest-notices-head">
+                        <h3>Latest Notices</h3>
+                    </div>
+                    <ul class="latest-notices-list" id="latestNoticesList">
+                        <!-- Items injected by script from NOTICES -->
+                    </ul>
+                    <a href="#" class="view-all-link">View All Notices <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       ⑤ CAMPUS HIGHLIGHTS
+  ══════════════════════════════════════ -->
+    <section class="highlights-section" id="campus">
+        <div class="container">
+            <div data-aos="fade-up">
+                <div class="section-label">Infrastructure</div>
+                <h2 class="section-title">Campus Highlights</h2>
+                <p class="section-sub">A modern campus built to inspire — blending institutional infrastructure with
+                    sustainable design.</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-theater-masks"></i></div>
+                    <div class="highlight-title">Centralized Auditorium</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-star"></i></div>
+                    <div class="highlight-title">Open Amphitheatre</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="highlight-title">Air-conditioned Library</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-flask"></i></div>
+                    <div class="highlight-title">Advanced Laboratories</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-basketball-ball"></i></div>
+                    <div class="highlight-title">Sports Hall &amp; Grounds</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="highlight-title">Modern Smart Classrooms</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-bed"></i></div>
+                    <div class="highlight-title">Hostel Facilities</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="highlight-title">Net-Zero Energy Vision</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-access-section" id="quick-access">
+        <div class="container">
+            <div style="text-align:center;" data-aos="fade-up">
+                <div class="section-label" style="justify-content:center;">Navigation</div>
+                <h2 class="section-title">Quick Access</h2>
+                <div class="divider" style="margin:16px auto 0;"></div>
+            </div>
+
+            <div class="quick-grid">
+                <a class="quick-card" href="#about">
+                    <div class="quick-icon"><i class="fas fa-university"></i></div>
+                    <div class="quick-label">About East Campus</div>
+                </a>
+                <a class="quick-card" href="#schools">
+                    <div class="quick-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="quick-label">Schools</div>
+                </a>
+                <a class="quick-card" href="#">
+                    <!-- Replace href with Academics page link -->
+                    <div class="quick-icon"><i class="fas fa-book"></i></div>
+                    <div class="quick-label">Academics</div>
+                </a>
+                <a class="quick-card" target="_blank" href="https://sites.google.com/view/ggsipuedc/students/students-welfare?authuser=0">
+                    <!-- Replace href with Students page link -->
+                    <div class="quick-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="quick-label">Students' Welfare</div>
+                </a>
+                <a class="quick-card" target="_blank" href="https://sites.google.com/view/ggsipuedc/students/student-council">
+                    <div class="quick-icon"><i class="fas fa-calendar-star"></i></div>
+                    <div class="quick-label">Students' Council</div>
+                </a>
+                <a class="quick-card" target="_blank" href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">
+                    <!-- Replace href with Photo Gallery link -->
+                    <div class="quick-icon"><i class="fas fa-images"></i></div>
+                    <div class="quick-label">Photo Gallery</div>
+                </a>
+                <a class="quick-card" target="_blank" href="https://ipu.ac.in/notices.php">
+                    <div class="quick-icon"><i class="fas fa-bell"></i></div>
+                    <div class="quick-label">Notices</div>
+                </a>
+                <a class="quick-card" href="#footer">
+                    <div class="quick-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="quick-label">Contact</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       ⑧ FOOTER
+  ══════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+                        <div class="footer-logo-wrap">
+                            <div class="footer-logo-circle"> <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true"alt="GGSIPU Logo"></div>
+                            <div>
+                                <div class="footer-brand-name">GGSIPU<br>East Delhi Campus</div>
+                                <div class="footer-brand-sub">Surajmal Vihar, Delhi-110032</div>
+                            </div>
+                        </div>
+
+                        <div class="website-visitor-counter">
+    <div class="counter-card">
+        <div class="counter-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+        </div>
+        <div class="counter-content">
+            <span class="counter-label">Total Visitors</span>
+            <div class="counter-badge">
+                <img src="https://hitwebcounter.com/counter/counter.php?page=8661208&style=0005&nbdigits=6&type=page&initCount=210820" title="Counter Widget" alt="Visit counter For Websites" border="0" />
+            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Quick Links</div>
+                        <ul class="footer-links">
+                            <li><a href="#about">About East Delhi Campus, GGSIPU</a></li>
+                            <li><a href="#schools">Schools</a></li>
+                            <li><a target="_blank" href="https://ipu.ac.in/">Main University Website </a></li>
+                            <li><a target="_blank" href="https://ipu.ac.in/adm2026/adm2026main.php">Admissions</a></li>
+                            <li><a target="_blank" href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">Photo Gallery</a></li>
+                            <li><a target="_blank" href="https://ipu.ac.in/notices.php">Notices</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Contact Us</div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">Guru Gobind Singh Indraprastha University,<br>East Delhi
+                                Campus,<br>Surajmal Vihar, Delhi-110032</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">directorincharge_edc@ipu.ac.in</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Find Us</div>
+                        <div class="footer-map">
+                           <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.761895697669!2d77.293444!3d28.641667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf5378f7f5b51%3A0xa234358e0a28f443!2sGuru%20Gobind%20Singh%20Indraprastha%20University%20(East%20Delhi%sCampus)!5e0!3m2!1sen!2sin!4v1711000000000!5m2!1sen!2sin" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Guru Gobind Singh Indraprastha University East Delhi Campus Map">
+    </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    © 2026 Guru Gobind Singh Indraprastha University, East Delhi Campus.<br>
+                    All Rights Reserved.
+                </p>
+                <p class="footer-made">Designed &amp; Maintained for <span>GGSIPU East Delhi Campus</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════ -->
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        const SITE_ASSETS = {
+            logoUniversity: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true",
+            logoCampus: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true",
+            aboutCampus: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/IMG-20230608-WA0021.jpg?raw=true",
+            heroSlide1: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/IMG-20230608-WA0022.jpg?raw=true",
+            heroSlide2: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/usdi.jpeg?raw=true",
+            heroSlide3: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/0R6A6647.JPG?raw=true",
+            heroSlide4: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/DSC_0216.jpg?raw=true",
+            heroSlide5: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/DSC_8603.jpg?raw=true",
+            heroSlide6: "https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/0R6A7000.JPG?raw=true",
+        };
+
+        // Apply hero slide backgrounds from the central config
+        document.querySelectorAll('[data-hero-bg]').forEach((slide) => {
+            const key = slide.getAttribute('data-hero-bg');
+            const url = SITE_ASSETS[key];
+            const bg = slide.querySelector('.slide-bg');
+            if (bg && url) bg.style.backgroundImage = `url('${url}')`;
+        });
+
+        // Apply header logo images from the central config (falls back to
+        // the text placeholder already in the markup if the image fails)
+        document.querySelectorAll('[data-asset]').forEach((el) => {
+            const key = el.getAttribute('data-asset');
+            const url = SITE_ASSETS[key];
+            if (!url) return;
+            el.src = url;
+            el.style.display = 'block';
+            el.onload = () => {
+                const placeholder = el.parentElement.querySelector('.logo-placeholder');
+                if (placeholder) placeholder.style.display = 'none';
+            };
+        });
+
+        /* ══════════════════════════════════════
+           NOTICES DATA
+           Single source of truth for both the carousel and the
+           Latest Notices panel — add or edit a notice in one place.
+        ══════════════════════════════════════ */
+        const NOTICES = [
+    {
+        title: "EDC Boys Hostel Admission Brochure 2026–27",
+        date: "20 Jul 2026",
+        link: "https://ipu.ac.in/Pubinfo2026/nt200720260202.pdf",
+        isNew: true,
+        hasPdf: true,
+    },
+    {
+        title: "EDC Girls Hostel Admission Brochure 2026–27",
+        date: "20 Jul 2026",
+        link: "https://ipu.ac.in/Pubinfo2026/nt200720260202.pdf",
+        isNew: true,
+        hasPdf: true,
+    },
+    {
+        title: "Fee Payment Portal for Remaining Academic Fee (₹93,500) - USAR",
+        date: "Latest",
+        link: "https://payments.billdesk.com/bdcollect/bd/gugosiuni/7172",
+        isNew: true,
+        hasPdf: false,
+    },
+    {
+        title: "Fee Payment Portal for Examination Fees",
+        date: "Latest",
+        link: "https://payments.billdesk.com/bdcollect/bd/gugosiuni/1932",
+        isNew: true,
+        hasPdf: false,
+    },
+    {
+        title: "Fee Payment Portal for Annual Fees",
+        date: "Latest",
+        link: "https://payments.billdesk.com/bdcollect/pay?p1=137&p2=14",
+        isNew: true,
+        hasPdf: false,
+    },
+    {
+        title: "Notification regarding Rates of Various Examination Fees",
+        date: "",
+        link: "http://ipu.ac.in/Pubinfo2022/ord3p120722%20(1).pdf",
+        isNew: false,
+        hasPdf: true,
+    },
+    {
+        title: "Fee Structure of Various Programmes (Academic Session 2024–25)",
+        date: "",
+        link: "http://ipu.ac.in/pubinfo2024/nt300424548%20(2).pdf",
+        isNew: false,
+        hasPdf: true,
+    },
+    {
+        title: "Fee Structure for Students Admitted in Academic Sessions 2022–23 & 2023–24",
+        date: "",
+        link: "http://ipu.ac.in/Pubinfo2022/ord3p120722%20(1).pdf",
+        isNew: false,
+        hasPdf: true,
+    },
+];
+
+        /* ══════════════════════════════════════
+           NOTICE CAROUSEL
+           Accessible, touch-friendly, auto-advancing carousel built
+           from the NOTICES array. Pauses on hover/focus, supports
+           arrow-key navigation, and click/swipe controls.
+        ══════════════════════════════════════ */
+        (function initNoticeCarousel() {
+            const track = document.getElementById('noticeTrack');
+            const dotsWrap = document.getElementById('noticeDots');
+            const prevBtn = document.getElementById('noticePrev');
+            const nextBtn = document.getElementById('noticeNext');
+            const carousel = document.getElementById('noticeCarousel');
+            if (!track || !NOTICES.length) return;
+
+            let index = 0;
+            let autoTimer = null;
+            const AUTO_DELAY = 5500;
+
+            // Build slides
+            NOTICES.forEach((notice, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'notice-slide';
+                slide.innerHTML = `
+                    <a class="notice-slide-card" href="${notice.link}" aria-label="${notice.title}">
+                        <div class="notice-slide-eyebrow">
+                            <span>Notice ${i + 1} of ${NOTICES.length}</span>
+                            ${notice.isNew ? '<span class="notice-badge-new">NEW</span>' : ''}
+                        </div>
+                        <div class="notice-slide-title">${notice.title}</div>
+                        <div class="notice-slide-date"><i class="far fa-calendar"></i>&nbsp; ${notice.date}</div>
+                        <span class="notice-read-more">Read More <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                `;
+                track.appendChild(slide);
+
+                // Build matching dot
+                const dot = document.createElement('button');
+                dot.className = 'notice-dot';
+                dot.setAttribute('aria-label', `Go to notice ${i + 1}`);
+                dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+                dot.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsWrap.children);
+
+            function render() {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
+            }
+
+            function goTo(i) {
+                index = (i + NOTICES.length) % NOTICES.length;
+                render();
+                restartAuto();
+            }
+
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(next, AUTO_DELAY);
+            }
+            function stopAuto() {
+                if (autoTimer) clearInterval(autoTimer);
+                autoTimer = null;
+            }
+            function restartAuto() {
+                stopAuto();
+                startAuto();
+            }
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+
+            // Pause on hover / focus
+            carousel.addEventListener('mouseenter', stopAuto);
+            carousel.addEventListener('mouseleave', startAuto);
+            carousel.addEventListener('focusin', stopAuto);
+            carousel.addEventListener('focusout', startAuto);
+
+            // Keyboard navigation
+            carousel.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+            });
+
+            // Touch / swipe support
+            let touchStartX = 0;
+            let touchDeltaX = 0;
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                stopAuto();
+            }, { passive: true });
+            carousel.addEventListener('touchmove', (e) => {
+                touchDeltaX = e.touches[0].clientX - touchStartX;
+            }, { passive: true });
+            carousel.addEventListener('touchend', () => {
+                if (Math.abs(touchDeltaX) > 40) {
+                    touchDeltaX < 0 ? next() : prev();
+                } else {
+                    startAuto();
+                }
+                touchDeltaX = 0;
+            });
+
+            render();
+            startAuto();
+        })();
+
+        /* ══════════════════════════════════════
+           LATEST NOTICES PANEL
+           Rendered from the same NOTICES array.
+        ══════════════════════════════════════ */
+        (function initLatestNoticesPanel() {
+            const list = document.getElementById('latestNoticesList');
+            if (!list) return;
+
+            NOTICES.forEach((notice) => {
+                const li = document.createElement('li');
+                li.className = 'latest-notice-item';
+                li.innerHTML = `
+                    <a class="latest-notice-link" href="${notice.link}">
+                        <span class="latest-notice-icon">
+                            <i class="fas ${notice.hasPdf ? 'fa-file-pdf' : 'fa-link'}"></i>
+                        </span>
+                        <span class="latest-notice-body">
+                            <span class="latest-notice-title-row">
+                                <span class="latest-notice-title">${notice.title}</span>
+                                ${notice.isNew ? '<span class="notice-mini-new">NEW</span>' : ''}
+                            </span>
+                            <span class="latest-notice-date">${notice.date}</span>
+                        </span>
+                    </a>
+                `;
+                list.appendChild(li);
+            });
+        })();
+
+        // ── Page Loader ──────────────────────────
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('page-loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // ── Hero Swiper ──────────────────────────
+        new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: { delay: 5200, disableOnInteraction: false, pauseOnMouseEnter: true },
+            speed: 700,
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // ── AOS Scroll Reveal (single, restrained fade-up) ───
+        AOS.init({
+            duration: 550,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50,
+        });
+
+        // ── Back to Top ──────────────────────────
+        const backTop = document.getElementById('back-top');
+        window.addEventListener('scroll', () => {
+            backTop.classList.toggle('visible', window.scrollY > 480);
+        });
+    </script>
+
+</body>
+
+</html>
