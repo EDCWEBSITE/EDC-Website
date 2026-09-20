@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notices &amp; Circulars — GGSIPU East Delhi Campus</title>
+
+    <!-- ═══════════════════════════════════════
+       FONTS — identical to the homepage: Archivo
+       (headings) + Open Sans (body).
+  ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..800&family=Open+Sans:wght@400..700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ══════════════════════════════════════
+       DESIGN TOKENS — copied verbatim from the
+       homepage so this page shares the exact
+       same look, feel and spacing scale.
+    ══════════════════════════════════════ */
+        :root {
+            --navy: #0b2447;
+            --navy-mid: #133566;
+            --navy-deep: #071731;
+
+            --accent: #1a5fa8;
+            --accent-dark: #11497f;
+            --accent-light: #6ea7dd;
+            --accent-tint: #eef4fb;
+            --accent-glow: rgba(26, 95, 168, .22);
+
+            --paper: #f5f7fa;
+            --white: #ffffff;
+            --grey-1: #f0f1f3;
+            --grey-2: #dfe2e7;
+            --grey-3: #8b95a3;
+            --ink: #1c2430;
+            --ink-mid: #475261;
+
+            --shadow-sm: 0 1px 3px rgba(11, 36, 71, .08), 0 1px 2px rgba(11, 36, 71, .04);
+            --shadow-md: 0 6px 20px rgba(11, 36, 71, .12);
+            --shadow-lg: 0 14px 38px rgba(11, 36, 71, .16);
+            --glow-accent: 0 0 0 1px var(--accent), 0 0 22px var(--accent-glow);
+
+            --radius-sm: 4px;
+            --radius: 8px;
+            --radius-lg: 12px;
+
+            --transition: all .25s ease;
+
+            --font-display: 'Archivo', 'Segoe UI', Arial, sans-serif;
+            --font-sans: 'Open Sans', Calibri, Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--ink);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .icon {
+            width: 1.15em;
+            height: 1.15em;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: -0.18em;
+            flex-shrink: 0;
+        }
+
+        section {
+            position: relative;
+        }
+
+        .section-pad {
+            padding: 84px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -.01em;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+            max-width: 660px;
+        }
+
+        .divider {
+            width: 46px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 16px 0 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .55s ease-out, transform .55s ease-out;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       HEADER — identical to the homepage
+    ══════════════════════════════════════ */
+        .site-header {
+            background: var(--white);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--grey-2);
+            box-shadow: 0 2px 10px rgba(11, 36, 71, .05);
+        }
+
+        .site-header::after {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--navy);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo-container:hover {
+            opacity: .92;
+        }
+
+        .site-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .header-link {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 9px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .header-link:hover {
+            background: var(--grey-1);
+        }
+
+        .header-link.active {
+            background: var(--accent-tint);
+            color: var(--accent-dark);
+        }
+
+        .header-cta {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+            color: var(--white);
+            background: var(--navy);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--navy);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* ══════════════════════════════════════
+       PAGE INTRO
+    ══════════════════════════════════════ */
+        .notice-page-intro {
+            padding: 56px 0 12px;
+            background: var(--white);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--grey-3);
+            margin-bottom: 22px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-dark);
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .sync-status-bar {
+            margin-top: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: var(--accent-tint);
+            border: 1px solid #d5e2f2;
+            border-radius: var(--radius);
+            padding: 14px 20px;
+        }
+
+        .sync-status-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .82rem;
+            color: var(--navy-mid);
+            font-weight: 600;
+        }
+
+        .sync-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2e9e5b;
+            box-shadow: 0 0 0 3px rgba(46, 158, 91, .18);
+            flex-shrink: 0;
+        }
+
+        .sync-dot.stale {
+            background: var(--grey-3);
+            box-shadow: 0 0 0 3px rgba(139, 149, 163, .18);
+        }
+
+        #syncMeta {
+            color: var(--ink-mid);
+            font-weight: 500;
+        }
+
+        .official-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .official-link:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        /* ══════════════════════════════════════
+       PINNED "NEW" BOARD
+    ══════════════════════════════════════ */
+        .pinned-section {
+            padding: 40px 0 0;
+            background: var(--white);
+        }
+
+        .pinned-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .pinned-card {
+            position: relative;
+            display: block;
+            background: var(--accent-tint);
+            border: 1px solid #d5e2f2;
+            border-radius: var(--radius);
+            padding: 22px 24px 20px 54px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pinned-card::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 26px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, var(--accent-light), var(--navy));
+            box-shadow: 0 2px 4px rgba(11, 36, 71, .3);
+        }
+
+        .pinned-card::after {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 36px;
+            width: 2px;
+            height: 8px;
+            background: rgba(11, 36, 71, .25);
+        }
+
+        .pinned-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .pinned-card:hover .pinned-title {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--accent-light);
+        }
+
+        .pinned-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .pinned-kind {
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .notice-badge-new {
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            background: var(--navy);
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 3px;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .55;
+            }
+        }
+
+        .pinned-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.4;
+            margin-bottom: 10px;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .pinned-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .pinned-date {
+            font-size: .74rem;
+            color: var(--grey-3);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pinned-open {
+            font-size: .74rem;
+            font-weight: 700;
+            color: var(--navy-mid);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pinned-card:hover .pinned-open {
+            color: var(--accent-dark);
+        }
+
+        /* ══════════════════════════════════════
+       FULL LIST + SEARCH
+    ══════════════════════════════════════ */
+        .notice-list-section {
+            padding: 44px 0 84px;
+            background: var(--white);
+        }
+
+        .list-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .list-toolbar h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .search-box {
+            position: relative;
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            font-family: var(--font-sans);
+            font-size: .88rem;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px 10px 38px;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--white);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .search-box .icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--grey-3);
+        }
+
+        .notice-list-panel {
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .latest-notices-list {
+            max-height: none;
+        }
+
+        .latest-notice-item {
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .latest-notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .latest-notice-link {
+            display: flex;
+            gap: 13px;
+            padding: 16px 20px;
+            transition: var(--transition);
+            align-items: flex-start;
+        }
+
+        .latest-notice-link:hover {
+            background: var(--accent-tint);
+            padding-left: 26px;
+        }
+
+        .latest-notice-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            color: var(--navy-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            font-size: .8rem;
+        }
+
+        .latest-notice-link:hover .latest-notice-icon {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .latest-notice-title {
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .latest-notice-link:hover .latest-notice-title {
+            color: var(--navy);
+        }
+
+        .latest-notice-date {
+            display: block;
+            font-size: .72rem;
+            color: var(--grey-3);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .notice-mini-new {
+            font-size: .56rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 7px;
+            vertical-align: 2px;
+        }
+
+        .list-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 22px 20px;
+            border-top: 1px solid var(--grey-2);
+            background: var(--white);
+        }
+
+        .result-count {
+            font-size: .78rem;
+            color: var(--grey-3);
+            font-weight: 600;
+        }
+
+        .load-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .84rem;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--white);
+            border: 1.5px solid var(--navy);
+            border-radius: var(--radius-sm);
+            padding: 10px 22px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .load-more-btn:hover:not(:disabled) {
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .load-more-btn:disabled {
+            opacity: .5;
+            cursor: default;
+        }
+
+        .list-state-msg {
+            padding: 44px 20px;
+            text-align: center;
+            font-size: .9rem;
+            color: var(--ink-mid);
+        }
+
+        .list-state-msg a {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .list-state-msg a:hover {
+            text-decoration: underline;
+        }
+
+        .skeleton-row {
+            display: flex;
+            gap: 13px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .skeleton-box {
+            border-radius: var(--radius-sm);
+            background: linear-gradient(90deg, var(--grey-1) 25%, var(--grey-2) 37%, var(--grey-1) 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.4s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       BACK TO TOP — identical to the homepage
+    ══════════════════════════════════════ */
+        #back-top {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        #back-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-top:hover {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+
+        /* ══════════════════════════════════════
+       FOOTER — identical to the homepage
+    ══════════════════════════════════════ */
+        .site-footer {
+            background: var(--navy-deep);
+            color: rgba(255, 255, 255, .72);
+            position: relative;
+        }
+
+        .site-footer::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-top {
+            padding: 64px 0 46px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.1fr 1.3fr;
+            gap: 44px;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .footer-logo-circle img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .footer-brand-sub {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .48);
+            letter-spacing: .03em;
+            margin-top: 2px;
+        }
+
+        .footer-about {
+            font-size: .82rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .55);
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .website-visitor-counter {
+            display: inline-flex;
+        }
+
+        .counter-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(110, 167, 221, .3);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .counter-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .counter-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(110, 167, 221, .12);
+            color: var(--accent-light);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .counter-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .counter-label {
+            font-size: .64rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .5);
+            font-weight: 700;
+        }
+
+        .counter-badge img {
+            height: 20px;
+            width: auto;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .footer-heading {
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(110, 167, 221, .22);
+            display: inline-block;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: .84rem;
+            color: rgba(255, 255, 255, .6);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '›';
+            color: var(--accent);
+            font-size: 1rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: .83rem;
+        }
+
+        .contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            background: rgba(110, 167, 221, .1);
+            border: 1px solid rgba(110, 167, 221, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .68rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .contact-text {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-map {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(110, 167, 221, .25);
+            margin-top: 8px;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 175px;
+            border: none;
+            display: block;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
+
+        .footer-map:hover iframe {
+            filter: grayscale(0%);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: .76rem;
+            color: rgba(255, 255, 255, .42);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .pinned-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 34px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-logo {
+                max-width: 210px;
+            }
+
+            .header-link {
+                display: none;
+            }
+
+            .notice-page-intro {
+                padding: 40px 0 4px;
+            }
+
+            .sync-status-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .list-toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pinned-card {
+                padding: 20px 18px 18px 46px;
+            }
+
+            .pinned-card::before {
+                left: 18px;
+            }
+
+            .pinned-card::after {
+                left: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ══════════════════════════════════════
+       HEADER — identical to the homepage
+  ══════════════════════════════════════ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-container">
+                <a href="index.html" aria-label="Guru Gobind Singh Indraprastha University Home">
+                    <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/crop_landscape.png?raw=true"
+                        alt="Guru Gobind Singh Indraprastha University — East Delhi Campus" class="site-logo"
+                        width="300" height="72" loading="eager" decoding="async">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a class="header-link" href="syllabus.html">
+                    Syllabus &amp; Scheme
+                </a>
+                <a class="header-link active" href="notice.html">
+                    Notices
+                </a>
+                <a class="header-link" target="_blank" rel="noopener" href="https://ipu.ac.in/">
+                    Main University Website
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a class="header-cta" target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">
+                    Admissions 2026
+                    <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+       PAGE INTRO
+  ══════════════════════════════════════ -->
+    <section class="notice-page-intro">
+        <div class="container">
+
+            <div class="reveal">
+                <div class="section-label">Announcements</div>
+                <h1 class="section-title">Notices, Circulars &amp; Information</h1>
+                <div class="divider"></div>
+            </div>
+
+            <div class="sync-status-bar reveal">
+                <a class="official-link" target="_blank" rel="noopener" href="https://ipu.ac.in/notices.php">
+                    View Official GGSIPU Notice Website
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       PINNED "NEW" BOARD
+  ══════════════════════════════════════ -->
+    <section class="pinned-section" id="pinnedSection" style="display:none;">
+        <div class="container">
+            <div class="pinned-grid reveal" id="pinnedGrid"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       FULL LIST + SEARCH
+  ══════════════════════════════════════ -->
+    <section class="notice-list-section">
+        <div class="container">
+            <div class="list-toolbar reveal">
+                <h3>All Notices</h3>
+                <div class="search-box">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search notices by title…" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="notice-list-panel reveal">
+                <ul class="latest-notices-list" id="noticeList"></ul>
+                <div class="list-footer" id="listFooter">
+                    <span class="result-count" id="resultCount"></span>
+                    <button class="load-more-btn" id="loadMoreBtn">Load More Notices</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       FOOTER — identical to the homepage
+  ══════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+                        <div class="footer-logo-wrap">
+                            <div class="footer-logo-circle">
+                                <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true"
+                                    alt="GGSIPU Logo" loading="lazy" decoding="async" width="43" height="43">
+                            </div>
+                            <div>
+                                <div class="footer-brand-name">GGSIPU<br>East Delhi Campus</div>
+                                <div class="footer-brand-sub">Surajmal Vihar, Delhi-110032</div>
+                            </div>
+                        </div>
+
+                        <p class="footer-about">
+                            Home to four specialised university schools driving excellence in automation, design, architecture, and media — shaping tomorrow's leaders.
+                        </p>
+
+                        <div class="website-visitor-counter">
+                            <div class="counter-card">
+                                <div class="counter-icon">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-label">Total Visitors</span>
+                                    <div class="counter-badge">
+                                        <img src="https://hitwebcounter.com/counter/counter.php?page=8661208&style=0005&nbdigits=6&type=page&initCount=210820"
+                                            title="Visitor counter" alt="Visitor counter" loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Quick Links</div>
+                        <ul class="footer-links">
+                            <li><a href="index.html#about">About East Delhi Campus</a></li>
+                            <li><a href="index.html#schools">Schools</a></li>
+                            <li><a href="syllabus.html">Syllabus &amp; Scheme</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/">Main University Website</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">Admissions</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">Photo Gallery</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/notices.php">Notices / Circulars</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Contact Us</div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="contact-text">Guru Gobind Singh Indraprastha University,<br>East Delhi Campus,<br>Surajmal Vihar, Delhi-110032</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="contact-text"><a href="mailto:directorincharge_edc@ipu.ac.in">directorincharge_edc@ipu.ac.in</a></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Find Us</div>
+                        <div class="footer-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.761895697669!2d77.293444!3d28.641667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf5378f7f5b51%3A0xa234358e0a28f443!2sGuru%20Gobind%20Singh%20Indraprastha%20University%20(East%20Delhi%20Campus)!5e0!3m2!1sen!2sin!4v1711000000000!5m2!1sen!2sin"
+                                width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="GGSIPU East Delhi Campus map"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    © 2026 Guru Gobind Singh Indraprastha University, East Delhi Campus. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════ -->
+    <script>
+        /* ══════════════════════════════════════
+           CONFIG — paste your deployed Apps Script
+           Web App URL here (ends in /exec). See
+           notice-system/DEPLOYMENT.md for how to
+           get this URL.
+        ══════════════════════════════════════ */
+        const NOTICE_API_URL = "https://script.google.com/macros/s/AKfycbzk6B3zw7G_DLiHKLTBO3EeCF0bLm7BGno9rb-o57VnsnYgW70VMKbWmONQSMpNwMS29g/exec"; // e.g. https://script.google.com/macros/s/XXXXXXXX/exec
+        const PAGE_SIZE = 20;
+
+        const ICON_PDF = '<svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+        const ICON_LINK = '<svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+        const ICON_CAL = '<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+        const ICON_ARROW = '<svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+        const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        const isPdf = (link) => /\.pdf(\?|$)/i.test(link);
+
+        const state = { offset: 0, query: '', total: null, loading: false };
+
+        const listEl = document.getElementById('noticeList');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const resultCountEl = document.getElementById('resultCount');
+        const searchInput = document.getElementById('searchInput');
+        const syncDot = document.getElementById('syncDot');
+        const syncMeta = document.getElementById('syncMeta');
+        const pinnedSection = document.getElementById('pinnedSection');
+        const pinnedGrid = document.getElementById('pinnedGrid');
+
+        function apiUrl(params) {
+            const url = new URL(NOTICE_API_URL);
+            Object.keys(params).forEach((k) => url.searchParams.set(k, params[k]));
+            return url.toString();
+        }
+
+        function noticeRowHTML(n) {
+            const icon = isPdf(n.link) ? ICON_PDF : ICON_LINK;
+            return `
+                <li class="latest-notice-item">
+                    <a class="latest-notice-link" href="${esc(n.link)}" target="_blank" rel="noopener">
+                        <span class="latest-notice-icon">${icon}</span>
+                        <span>
+                            <span class="latest-notice-title">${esc(n.title)}${n.isNew ? '<span class="notice-mini-new">NEW</span>' : ''}</span>
+                            <span class="latest-notice-date">${ICON_CAL} ${esc(n.date)}</span>
+                        </span>
+                    </a>
+                </li>`;
+        }
+
+        function pinnedCardHTML(n) {
+            return `
+                <a class="pinned-card" href="${esc(n.link)}" target="_blank" rel="noopener">
+                    <span class="pinned-eyebrow">
+                        <span class="pinned-kind">Notice</span>
+                        <span class="notice-badge-new">NEW</span>
+                    </span>
+                    <span class="pinned-title">${esc(n.title)}</span>
+                    <span class="pinned-meta">
+                        <span class="pinned-date">${ICON_CAL} ${esc(n.date)}</span>
+                        <span class="pinned-open">Open ${isPdf(n.link) ? 'PDF' : 'Link'} ${ICON_ARROW}</span>
+                    </span>
+                </a>`;
+        }
+
+        function skeletonRows(count) {
+            let html = '';
+            for (let i = 0; i < count; i++) {
+                html += `
+                    <li class="latest-notice-item">
+                        <div class="skeleton-row">
+                            <div class="skeleton-box" style="width:32px;height:32px;"></div>
+                            <div style="flex:1;">
+                                <div class="skeleton-box" style="width:${60 + (i % 3) * 10}%;height:14px;margin-bottom:8px;"></div>
+                                <div class="skeleton-box" style="width:90px;height:11px;"></div>
+                            </div>
+                        </div>
+                    </li>`;
+            }
+            return html;
+        }
+
+        async function loadPinned() {
+            try {
+                const res = await fetch(apiUrl({ limit: 3, offset: 0 }));
+                const data = await res.json();
+                if (data.notices && data.notices.length) {
+                    pinnedGrid.innerHTML = data.notices.map(pinnedCardHTML).join('');
+                    pinnedSection.style.display = '';
+                    syncDot.classList.remove('stale');
+                    const generated = new Date(data.generatedAt);
+                    syncMeta.textContent = '— feed refreshed ' + generated.toLocaleString();
+                }
+            } catch (err) {
+                syncDot.classList.add('stale');
+                syncMeta.textContent = '— could not reach the notice feed right now';
+            }
+        }
+
+        async function loadPage(reset) {
+            if (state.loading) return;
+            state.loading = true;
+
+            if (reset) {
+                state.offset = 0;
+                listEl.innerHTML = skeletonRows(6);
+                resultCountEl.textContent = '';
+            }
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.textContent = 'Loading…';
+
+            try {
+                const res = await fetch(apiUrl({ limit: PAGE_SIZE, offset: state.offset, q: state.query }));
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+
+                if (reset) listEl.innerHTML = '';
+
+                if (data.notices.length === 0 && state.offset === 0) {
+                    listEl.innerHTML = `<li class="list-state-msg">
+                        No notices match "<strong>${esc(state.query)}</strong>". Try a different search, or
+                        <a href="https://ipu.ac.in/notices.php" target="_blank" rel="noopener">check the official notice board</a>.
+                    </li>`;
+                } else {
+                    listEl.insertAdjacentHTML('beforeend', data.notices.map(noticeRowHTML).join(''));
+                }
+
+                state.total = data.total;
+                state.offset = data.offset + data.count;
+                resultCountEl.textContent = `Showing ${Math.min(state.offset, state.total)} of ${state.total} notices`;
+
+                const hasMore = state.offset < state.total;
+                loadMoreBtn.style.display = hasMore ? '' : 'none';
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.textContent = 'Load More Notices';
+            } catch (err) {
+                if (reset) {
+                    listEl.innerHTML = `<li class="list-state-msg">
+                        Couldn't load notices right now. Please try again shortly, or
+                        <a href="https://ipu.ac.in/notices.php" target="_blank" rel="noopener">visit the official GGSIPU notice board</a>.
+                    </li>`;
+                }
+                loadMoreBtn.style.display = 'none';
+            } finally {
+                state.loading = false;
+            }
+        }
+
+        let searchTimer = null;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                state.query = searchInput.value.trim();
+                loadPage(true);
+            }, 320);
+        });
+
+        loadMoreBtn.addEventListener('click', () => loadPage(false));
+
+        loadPinned();
+        loadPage(true);
+
+        /* Scroll reveal — identical to the homepage */
+        (function initReveal() {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.classList.add('in'));
+                return;
+            }
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -40px 0px', threshold: .1 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        /* Back to top — identical to the homepage */
+        (function initBackTop() {
+            const backTop = document.getElementById('back-top');
+            window.addEventListener('scroll', () => {
+                backTop.classList.toggle('visible', window.scrollY > 480);
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+
+</html>
