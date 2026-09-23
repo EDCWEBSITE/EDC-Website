@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Office of the Proctor, East Delhi Campus — GGSIPU</title>
+
+    <!-- ═══════════════════════════════════════
+       FONTS — Archivo (strong grotesque for headings)
+       + Open Sans (institutional body face).
+       Only the weights actually used are loaded.
+  ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..800&family=Open+Sans:wght@400..700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ══════════════════════════════════════
+       DESIGN TOKENS
+       Same tokens as the East Delhi Campus home page, so this
+       page reads as part of the same official site.
+    ══════════════════════════════════════ */
+        :root {
+            --navy: #0b2447;
+            --navy-mid: #133566;
+            --navy-deep: #071731;
+
+            --accent: #1a5fa8;
+            --accent-dark: #11497f;
+            --accent-light: #6ea7dd;
+            --accent-tint: #eef4fb;
+            --accent-glow: rgba(26, 95, 168, .22);
+
+            --paper: #f5f7fa;
+            --white: #ffffff;
+            --grey-1: #f0f1f3;
+            --grey-2: #dfe2e7;
+            --grey-3: #8b95a3;
+            --ink: #1c2430;
+            --ink-mid: #475261;
+
+            --shadow-sm: 0 1px 3px rgba(11, 36, 71, .08), 0 1px 2px rgba(11, 36, 71, .04);
+            --shadow-md: 0 6px 20px rgba(11, 36, 71, .12);
+            --shadow-lg: 0 14px 38px rgba(11, 36, 71, .16);
+            --glow-accent: 0 0 0 1px var(--accent), 0 0 22px var(--accent-glow);
+
+            --radius-sm: 4px;
+            --radius: 8px;
+            --radius-lg: 12px;
+
+            --transition: all .25s ease;
+
+            --font-display: 'Archivo', 'Segoe UI', Arial, sans-serif;
+            --font-sans: 'Open Sans', Calibri, Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--ink);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .icon {
+            width: 1.15em;
+            height: 1.15em;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: -0.18em;
+            flex-shrink: 0;
+        }
+
+        section {
+            position: relative;
+        }
+
+        .section-pad {
+            padding: 84px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -.01em;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+            max-width: 660px;
+        }
+
+        .divider {
+            width: 46px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 16px 0 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .55s ease-out, transform .55s ease-out;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       HEADER — identical to the campus home page
+    ══════════════════════════════════════ */
+        .site-header {
+            background: var(--white);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--grey-2);
+            box-shadow: 0 2px 10px rgba(11, 36, 71, .05);
+        }
+
+        .site-header::after {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--navy);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo-container:hover {
+            opacity: .92;
+        }
+
+        .site-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .header-link {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 9px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .header-link:hover {
+            background: var(--grey-1);
+        }
+
+        .header-cta {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+            color: var(--white);
+            background: var(--navy);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--navy);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* ══════════════════════════════════════
+       PAGE BANNER
+    ══════════════════════════════════════ */
+        .page-banner {
+            background: var(--navy);
+            padding: 34px 0 40px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .55);
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, .85);
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+
+        .page-banner .section-label {
+            color: var(--accent-light);
+        }
+
+        .page-banner .section-label::before {
+            background: var(--accent-light);
+        }
+
+        .page-banner h1.section-title {
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .page-banner .section-sub {
+            color: rgba(255, 255, 255, .68);
+            max-width: 720px;
+        }
+
+        /* ══════════════════════════════════════
+       INTRO
+    ══════════════════════════════════════ */
+        .intro-block {
+            padding: 56px 0 8px;
+        }
+
+        .intro-block p {
+            font-size: .96rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+            max-width: 880px;
+        }
+
+        .intro-block p + p {
+            margin-top: 14px;
+        }
+
+        /* ══════════════════════════════════════
+       OFFICER PROFILE CARDS (Proctor / Associate Proctor)
+    ══════════════════════════════════════ */
+        .officer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .officer-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .officer-card-head {
+            padding: 30px 30px 24px;
+            border-bottom: 1px solid var(--grey-2);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .officer-photo {
+            width: 108px;
+            height: 108px;
+            border-radius: var(--radius);
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+            border: 1px solid var(--grey-2);
+            background: var(--paper);
+        }
+
+        .officer-eyebrow {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .officer-name {
+            font-family: var(--font-display);
+            font-size: 1.28rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .officer-title {
+            font-size: .88rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .officer-affiliation {
+            font-size: .82rem;
+            color: var(--ink-mid);
+            margin-top: 4px;
+        }
+
+        .officer-card-body {
+            padding: 24px 30px 8px;
+            flex: 1;
+        }
+
+        .officer-bio {
+            font-size: .88rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+        }
+
+        .officer-facts {
+            margin-top: 18px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .officer-fact {
+            display: flex;
+            gap: 10px;
+            font-size: .82rem;
+            color: var(--ink-mid);
+        }
+
+        .officer-fact strong {
+            color: var(--navy);
+            font-weight: 700;
+            flex-shrink: 0;
+            min-width: 96px;
+        }
+
+        .officer-fact a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        .officer-card-actions {
+            padding: 22px 30px 0;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .8rem;
+            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            background: var(--white);
+            color: var(--navy);
+            border: 1.5px solid var(--grey-2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+            background: var(--accent-tint);
+        }
+
+        /* Office order — notice-style presentation, reused for both cards and the notices list */
+        .order-notice {
+            margin: 22px 30px 30px;
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+        }
+
+        .order-notice-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .64rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+        }
+
+        .order-notice-title {
+            font-size: .86rem;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        .order-notice-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 14px;
+            font-size: .74rem;
+            color: var(--ink-mid);
+            margin-top: 8px;
+        }
+
+        .order-notice-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 12px;
+        }
+
+        .order-notice-link:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        /* ══════════════════════════════════════
+       PROCTORIAL BOARD TABLE
+    ══════════════════════════════════════ */
+        .board-section {
+            background: var(--paper);
+        }
+
+        .board-table-wrap {
+            margin-top: 40px;
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        table.board-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .board-table thead th {
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-align: left;
+            padding: 14px 20px;
+        }
+
+        .board-table tbody td {
+            padding: 14px 20px;
+            font-size: .86rem;
+            color: var(--ink-mid);
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .board-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .board-table tbody tr:hover {
+            background: var(--accent-tint);
+        }
+
+        .board-table td.name-cell {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .board-position {
+            display: inline-block;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 100px;
+            background: var(--accent-tint);
+            color: var(--accent-dark);
+            border: 1px solid #d5e2f2;
+        }
+
+        .board-position.lead {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .board-table td a[href^="mailto:"] {
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        .board-table td a[href^="mailto:"]:hover {
+            text-decoration: underline;
+        }
+
+        .email-unavailable {
+            font-size: .78rem;
+            color: var(--grey-3);
+            font-style: italic;
+        }
+
+        .board-note {
+            font-size: .8rem;
+            color: var(--ink-mid);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       OFFICE INFORMATION
+    ══════════════════════════════════════ */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-tint);
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .info-card h3 {
+            font-family: var(--font-display);
+            font-size: .92rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .info-card p,
+        .info-card a {
+            font-size: .84rem;
+            color: var(--ink-mid);
+            line-height: 1.7;
+        }
+
+        .info-card a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        /* ══════════════════════════════════════
+       NOTICES LIST
+    ══════════════════════════════════════ */
+        .notice-row-list {
+            margin-top: 40px;
+            border-top: 1px solid var(--grey-2);
+        }
+
+        .notice-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .notice-row-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            color: var(--navy-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .notice-row-body {
+            flex: 1;
+        }
+
+        .notice-row-title {
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        .notice-row a.notice-row-title-link:hover .notice-row-title {
+            text-decoration: underline;
+            color: var(--accent-dark);
+        }
+
+        .notice-row-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 14px;
+            font-size: .76rem;
+            color: var(--grey-3);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .notice-row-badge {
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 2px 7px;
+            border-radius: 3px;
+            margin-left: 8px;
+            vertical-align: 2px;
+        }
+
+        .notice-row-open {
+            flex-shrink: 0;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--navy-mid);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .notice-row:hover .notice-row-open {
+            color: var(--accent-dark);
+        }
+
+        /* ══════════════════════════════════════
+       ORDER REFERENCE LINKS — plain, no heading
+    ══════════════════════════════════════ */
+        .source-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .source-links a {
+            font-size: .78rem;
+            color: var(--accent-dark);
+            word-break: break-all;
+        }
+
+        .source-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ══════════════════════════════════════
+       FOOTER — identical to the campus home page
+    ══════════════════════════════════════ */
+        .site-footer {
+            background: var(--navy-deep);
+            color: rgba(255, 255, 255, .72);
+            position: relative;
+        }
+
+        .site-footer::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-top {
+            padding: 64px 0 46px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.1fr 1.3fr;
+            gap: 44px;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .footer-logo-circle img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .footer-brand-sub {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .48);
+            letter-spacing: .03em;
+            margin-top: 2px;
+        }
+
+        .footer-about {
+            font-size: .82rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .55);
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .website-visitor-counter {
+            display: inline-flex;
+        }
+
+        .counter-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(110, 167, 221, .3);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .counter-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .counter-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(110, 167, 221, .12);
+            color: var(--accent-light);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .counter-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .counter-label {
+            font-size: .64rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .5);
+            font-weight: 700;
+        }
+
+        .counter-badge img {
+            height: 20px;
+            width: auto;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .footer-heading {
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(110, 167, 221, .22);
+            display: inline-block;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: .84rem;
+            color: rgba(255, 255, 255, .6);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '›';
+            color: var(--accent);
+            font-size: 1rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: .83rem;
+        }
+
+        .contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            background: rgba(110, 167, 221, .1);
+            border: 1px solid rgba(110, 167, 221, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .68rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .contact-text {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-map {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(110, 167, 221, .25);
+            margin-top: 8px;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 175px;
+            border: none;
+            display: block;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
+
+        .footer-map:hover iframe {
+            filter: grayscale(0%);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: .76rem;
+            color: rgba(255, 255, 255, .42);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════ */
+        #back-top {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        #back-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-top:hover {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .officer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 34px;
+            }
+
+            .board-table-wrap {
+                overflow-x: auto;
+            }
+
+            table.board-table {
+                min-width: 780px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-pad {
+                padding: 60px 0;
+            }
+
+            .site-logo {
+                max-width: 210px;
+            }
+
+            .header-link {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .officer-card-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .officer-card-actions,
+            .order-notice {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .officer-card-head,
+            .officer-card-body {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .notice-row {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+       BACK TO TOP
+  ══════════════════════════════════════ -->
+    <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-container">
+                <a href="https://sites.google.com/view/ggsipuedc" aria-label="Guru Gobind Singh Indraprastha University Home">
+                    <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/crop_landscape.png?raw=true"
+                        alt="Guru Gobind Singh Indraprastha University — East Delhi Campus" class="site-logo"
+                        width="300" height="72" loading="eager" decoding="async">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a class="header-link" target="_blank" rel="noopener" href="https://ipu.ac.in/">
+                    Main University Website
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a class="header-cta" target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">
+                    Admissions 2026
+                    <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+       PAGE BANNER
+  ══════════════════════════════════════ -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="section-label">Student Discipline &amp; Conduct</div>
+            <h1 class="section-title">Proctor, East Delhi Campus</h1>
+            <p class="section-sub">The Office of the Proctor is responsible for student discipline, conduct and campus decorum at the East Delhi Campus, and administers the Proctorial Board constituted for the campus.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       INTRO — ABOUT THE OFFICE
+  ══════════════════════════════════════ -->
+    <section class="intro-block">
+        <div class="container reveal">
+            <p>
+                The Office functions under <a href="https://ipu.ac.in/norms/Ordinance/o3.pdf" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:600;">Ordinance 3: Maintenance of Discipline Among Students</a>, which sets out the disciplinary powers and procedure applicable across the University, including the East Delhi Campus.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       CURRENT PROCTOR / ASSOCIATE PROCTOR
+  ══════════════════════════════════════ -->
+    <section class="section-pad" style="padding-top:32px;" id="officers">
+        <div class="container">
+
+            <div class="officer-grid">
+
+                <!-- Proctor -->
+                <article class="officer-card reveal">
+                    <div class="officer-card-head">
+                        <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Proctor/kulveen-trehan.jpg?raw=true"
+                            alt="Prof. Kulveen Trehan, Proctor, East Delhi Campus" class="officer-photo"
+                            loading="lazy" decoding="async">
+                        <div>
+                            <div class="officer-eyebrow">Proctor, EDC</div>
+                            <h2 class="officer-name">Prof. Kulveen Trehan</h2>
+                            <div class="officer-title">Proctor, East Delhi Campus</div>
+                            <div class="officer-affiliation">Professor, University School of Mass Communication (USMC)</div>
+                        </div>
+                    </div>
+
+                    <div class="officer-card-body">
+                        <p class="officer-bio">
+                            Prof. Kulveen Trehan is a Professor at the University School of Mass Communication (USMC), GGSIPU, and holds additional charge as Proctor, East Delhi Campus. She chairs the Proctorial Board constituted for the campus.
+                        </p>
+                        <div class="officer-facts">
+                            <div class="officer-fact"><strong>Email</strong><a href="mailto:kulveentrehan@ipu.ac.in">kulveentrehan@ipu.ac.in</a></div>
+                            <div class="officer-fact"><strong>School</strong><span>University School of Mass Communication, East Delhi Campus</span></div>
+                        </div>
+                    </div>
+
+                    <div class="order-notice">
+                        <div class="order-notice-label">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            Office Order
+                        </div>
+                        <div class="order-notice-title">
+                            Order to appoint Prof. Kulveen Trehan, USMC as Proctor, East Delhi Campus, in supersession of all previous orders
+                        </div>
+                        <div class="order-notice-meta">
+                            <span>File No. F1(6)(76)/2024/Estt.(N.T.)/5468</span>
+                            <span>Dated 31 August 2026</span>
+                        </div>
+                        <a class="order-notice-link" href="https://ipu.ac.in/Pubinfo2026/nt010920261036.pdf" target="_blank" rel="noopener">
+                            Open Order (PDF)
+                            <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Associate Proctor -->
+                <article class="officer-card reveal">
+                    <div class="officer-card-head">
+                        <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Proctor/yogesh-bhanu.jpg?raw=true"
+                            alt="Sh. Yogesh Kumar Bhanu, Associate Proctor, East Delhi Campus" class="officer-photo"
+                            loading="lazy" decoding="async">
+                        <div>
+                            <div class="officer-eyebrow">Associate Proctor</div>
+                            <h2 class="officer-name">Sh. Yogesh Kumar Bhanu</h2>
+                            <div class="officer-title">Associate Proctor, East Delhi Campus</div>
+                            <div class="officer-affiliation">Assistant Professor, University School of Design &amp; Innovation (USDI)</div>
+                        </div>
+                    </div>
+
+                    <div class="officer-card-body">
+                        <p class="officer-bio">
+                            Sh. Yogesh Kumar Bhanu is an Assistant Professor at the University School of Design &amp; Innovation (USDI), GGSIPU, and holds additional charge as Associate Proctor, East Delhi Campus, assisting the Proctor and the Proctorial Board.
+                        </p>
+                        <div class="officer-facts">
+                            <div class="officer-fact"><strong>Email</strong><a href="mailto:yogesh.usdi@ipu.ac.in">yogesh.usdi@ipu.ac.in</a></div>
+                            <div class="officer-fact"><strong>School</strong><span>University School of Design &amp; Innovation, East Delhi Campus</span></div>
+                        </div>
+                    </div>
+
+                    <div class="order-notice">
+                        <div class="order-notice-label">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            Office Order
+                        </div>
+                        <div class="order-notice-title">
+                            Order to appoint Sh. Yogesh Kumar Bhanu, USDI as Associate Proctor, East Delhi Campus, in supersession of all previous orders
+                        </div>
+                        <div class="order-notice-meta">
+                            <span>File No. F1(6)(76)/2024/Estt.(N.T.)/5468</span>
+                            <span>Dated 31 August 2026</span>
+                        </div>
+                        <a class="order-notice-link" href="https://ipu.ac.in/Pubinfo2026/nt010920261036.pdf" target="_blank" rel="noopener">
+                            Open Order (PDF)
+                            <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       PROCTOR TEAM / PROCTORIAL BOARD
+  ══════════════════════════════════════ -->
+    <section class="section-pad board-section" id="board">
+        <div class="container reveal">
+            <div class="section-label">Proctor Team</div>
+            <h2 class="section-title">Proctorial Board, East Delhi Campus</h2>
+            <p class="section-sub">Constituted alongside the Proctor and Associate Proctor by the same office order of 31 August 2026. Membership below is reproduced exactly as listed in that order.</p>
+
+            <div class="board-table-wrap">
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th style="width:44px;">S.No.</th>
+                            <th>Name</th>
+                            <th>School / Department</th>
+                            <th>Position in Proctorial Board</th>
+                            <th>Official Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="name-cell">Prof. Kulveen Trehan</td>
+                            <td>USMC</td>
+                            <td><span class="board-position lead">Proctor</span></td>
+                            <td><a href="mailto:kulveentrehan@ipu.ac.in">kulveentrehan@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="name-cell">Prof. Rahul Johari</td>
+                            <td>USAR</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:rahul@ipu.ac.in">rahul@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="name-cell">Prof. Abha Aggarwal</td>
+                            <td>USBAS</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:abha@ipu.ac.in">abha@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="name-cell">Prof. Kriti Batra</td>
+                            <td>USBAS</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:kbatra@ipu.ac.in">kbatra@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="name-cell">Dr. Nikhilesh Sharma</td>
+                            <td>USDI</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:nikhilesh.sharma@ipu.ac.in">nikhilesh.sharma@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="name-cell">Mrs. Sonali Roychandra</td>
+                            <td>USAP</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:sonaliroychandra@ipu.ac.in">sonaliroychandra@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="name-cell">Dr. Sushobhan Chowdhury</td>
+                            <td>USAR</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:sushobhan.usar@ipu.ac.in">sushobhan.usar@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td class="name-cell">Dr. Bindoo Ranjan</td>
+                            <td>USDI</td>
+                            <td><span class="board-position">Member</span></td>
+                            <td><a href="mailto:bindoo.ranjan@ipu.ac.in">bindoo.ranjan@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td class="name-cell">Sh. Yogesh Kumar Bhanu</td>
+                            <td>USDI</td>
+                            <td><span class="board-position lead">Associate Proctor</span></td>
+                            <td><a href="mailto:yogesh.usdi@ipu.ac.in">yogesh.usdi@ipu.ac.in</a></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td class="name-cell">Shri Ramesh Sharma</td>
+                            <td>Assistant Registrar, East Delhi Campus</td>
+                            <td><span class="board-position">Member Convenor</span></td>
+                            <td><a href="mailto:rcsharma@ipu.ac.in">rcsharma@ipu.ac.in</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="board-note">
+                Ms. Pooja Vaid, Assistant Section Officer, East Delhi Campus, assists the Proctorial Board in the execution of its work, in addition to her existing duties, per the same order.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       OFFICE INFORMATION
+  ══════════════════════════════════════ -->
+    <section class="section-pad" id="office-info">
+        <div class="container reveal">
+            <div class="section-label">Office Information</div>
+            <h2 class="section-title">Reaching the Office</h2>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Office Address</h3>
+                    <p>Guru Gobind Singh Indraprastha University,<br>East Delhi Campus,<br>Surajmal Vihar, Delhi-110032</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Proctor</h3>
+                    <p><a href="mailto:kulveentrehan@ipu.ac.in">kulveentrehan@ipu.ac.in / edc-proctorial-board@ipu.ac.in</a></p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Associate Proctor</h3>
+                    <p><a href="mailto:yogesh.usdi@ipu.ac.in">yogesh.usdi@ipu.ac.in</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       PROCTOR OFFICE NOTICES
+  ══════════════════════════════════════ -->
+    <section class="section-pad" style="background:var(--paper);" id="notices">
+        <div class="container reveal">
+            <div class="section-label">Announcements</div>
+            <h2 class="section-title">Proctor Office Notices</h2>
+            <p class="section-sub">Official notices and orders concerning the Office of the Proctor, East Delhi Campus, most recent first.</p>
+
+            <div class="notice-row-list">
+
+                <div class="notice-row">
+                    <div class="notice-row-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="notice-row-body">
+                        <a class="notice-row-title-link" href="https://ipu.ac.in/Pubinfo2026/nt010920261036.pdf" target="_blank" rel="noopener">
+                            <span class="notice-row-title">Order to appoint Prof. Kulveen Trehan, USMC as Proctor and Sh. Yogesh Kumar Bhanu, Assistant Professor, USDI as Associate Proctor, East Delhi Campus<span class="notice-row-badge">NEW</span></span>
+                        </a>
+                        <div class="notice-row-meta">
+                            <span>01 September 2026</span>
+                            <span>File No. F1(6)(76)/2024/Estt.(N.T.)/5468</span>
+                        </div>
+                    </div>
+                    <a class="notice-row-open" href="https://ipu.ac.in/Pubinfo2026/nt010920261036.pdf" target="_blank" rel="noopener">
+                        Open PDF
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+
+                <div class="notice-row">
+                    <div class="notice-row-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="notice-row-body">
+                        <a class="notice-row-title-link" href="https://ipu.ac.in/Pubinfo2025/nt120925415%20(6).pdf" target="_blank" rel="noopener">
+                            <span class="notice-row-title">Advisory — for all Students of University Schools of Studies</span>
+                        </a>
+                        <div class="notice-row-meta">
+                            <span>09 September 2025</span>
+                            <span>File No. F.33(1)(1)/2025/PROC/800</span>
+                        </div>
+                    </div>
+                    <a class="notice-row-open" href="https://ipu.ac.in/Pubinfo2025/nt120925415%20(6).pdf" target="_blank" rel="noopener">
+                        Open PDF
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+
+            </div>
+
+            <a href="https://ipu.ac.in/proctor.php?limit=25&amp;search=" target="_blank" rel="noopener" class="btn-outline" style="margin-top:24px;">
+                View All Proctor Office Notices
+                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <p class="unavailable-note" style="font-size:.78rem;color:var(--grey-3);font-style:italic;margin-top:12px;">
+                Office of Proctor, Dwarka Campus <a href="https://ipu.ac.in/proctor.php?limit=25&amp;search=" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:600;">Office of the Proctor page on the main University website</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+                        <div class="footer-logo-wrap">
+                            <div class="footer-logo-circle">
+                                <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true"
+                                    alt="GGSIPU Logo" loading="lazy" decoding="async" width="43" height="43">
+                            </div>
+                            <div>
+                                <div class="footer-brand-name">GGSIPU<br>East Delhi Campus</div>
+                                <div class="footer-brand-sub">Surajmal Vihar, Delhi-110032</div>
+                            </div>
+                        </div>
+
+                        <p class="footer-about">
+                            Home to four specialised university schools driving excellence in automation, design, architecture, and media — shaping tomorrow's leaders.
+                        </p>
+
+                        <div class="website-visitor-counter">
+                            <div class="counter-card">
+                                <div class="counter-icon">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-label">Total Visitors</span>
+                                    <div class="counter-badge">
+                                        <img src="https://hitwebcounter.com/counter/counter.php?page=8661208&style=0005&nbdigits=6&type=page&initCount=210820"
+                                            title="Visitor counter" alt="Visitor counter" loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Quick Links</div>
+                        <ul class="footer-links">
+                            <li><a href="https://sites.google.com/view/ggsipuedc">About East Delhi Campus</a></li>
+                            <li><a href="https://sites.google.com/view/ggsipuedc">Schools</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/">Main University Website</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">Admissions</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">Photo Gallery</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/notices.php">Notices</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Contact Us</div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="contact-text">Guru Gobind Singh Indraprastha University,<br>East Delhi Campus,<br>Surajmal Vihar, Delhi-110032</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="contact-text"><a href="mailto:directorincharge_edc@ipu.ac.in">directorincharge_edc@ipu.ac.in</a></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Find Us</div>
+                        <div class="footer-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.761895697669!2d77.293444!3d28.641667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf5378f7f5b51%3A0xa234358e0a28f443!2sGuru%20Gobind%20Singh%20Indraprastha%20University%20(East%20Delhi%20Campus)!5e0!3m2!1sen!2sin!4v1711000000000!5m2!1sen!2sin"
+                                width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="GGSIPU East Delhi Campus map"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    © 2026 Guru Gobind Singh Indraprastha University, East Delhi Campus. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+       SCRIPTS — vanilla only
+  ══════════════════════════════════════ -->
+    <script>
+        /* Scroll reveal — tiny IntersectionObserver (same as campus home page) */
+        (function initReveal() {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(el => el.classList.add('in'));
+                return;
+            }
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -40px 0px', threshold: .1 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        /* Back to top */
+        (function initBackTop() {
+            const backTop = document.getElementById('back-top');
+            window.addEventListener('scroll', () => {
+                backTop.classList.toggle('visible', window.scrollY > 480);
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+
+</html>
