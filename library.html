@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>East Campus Library — GGSIPU East Delhi Campus</title>
+    <meta name="description"
+        content="East Campus Library, Guru Gobind Singh Indraprastha University, East Delhi Campus — about the library, floor plans, library staff, digital resources, Web-OPAC, downloads and notices." />
+
+    <!-- ═══════════════════════════════════════
+       FONTS — same as the main site (Archivo + Open Sans)
+  ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@600..800&family=Open+Sans:wght@400..700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ══════════════════════════════════════
+       DESIGN TOKENS — identical to the main site
+    ══════════════════════════════════════ */
+        :root {
+            --navy: #0b2447;
+            --navy-mid: #133566;
+            --navy-deep: #071731;
+
+            --accent: #1a5fa8;
+            --accent-dark: #11497f;
+            --accent-light: #6ea7dd;
+            --accent-tint: #eef4fb;
+            --accent-glow: rgba(26, 95, 168, .22);
+
+            --paper: #f5f7fa;
+            --white: #ffffff;
+            --grey-1: #f0f1f3;
+            --grey-2: #dfe2e7;
+            --grey-3: #8b95a3;
+            --ink: #1c2430;
+            --ink-mid: #475261;
+
+            --shadow-sm: 0 1px 3px rgba(11, 36, 71, .08), 0 1px 2px rgba(11, 36, 71, .04);
+            --shadow-md: 0 6px 20px rgba(11, 36, 71, .12);
+            --shadow-lg: 0 14px 38px rgba(11, 36, 71, .16);
+
+            --radius-sm: 4px;
+            --radius: 8px;
+            --radius-lg: 12px;
+
+            --transition: all .25s ease;
+
+            --font-display: 'Archivo', 'Segoe UI', Arial, sans-serif;
+            --font-sans: 'Open Sans', Calibri, Arial, sans-serif;
+
+            /* set from JS to the real sticky header height */
+            --header-h: 99px;
+            --subnav-h: 50px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--ink);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .icon {
+            width: 1.15em;
+            height: 1.15em;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: -0.18em;
+            flex-shrink: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 12px;
+            top: -60px;
+            z-index: 2000;
+            background: var(--navy);
+            color: var(--white);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-size: .85rem;
+            font-weight: 700;
+        }
+
+        .skip-link:focus {
+            top: 12px;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════
+       SECTION HELPERS — as on the main site
+    ══════════════════════════════════════ */
+        section {
+            position: relative;
+        }
+
+        .section-pad {
+            padding: 72px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+            font-weight: 700;
+            letter-spacing: -.01em;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+            max-width: 720px;
+        }
+
+        .divider {
+            width: 46px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin: 16px 0 0;
+        }
+
+        .alt-bg {
+            background: var(--paper);
+        }
+
+        /* Anchored sections land below both sticky bars */
+        .anchor-section {
+            scroll-margin-top: calc(var(--header-h) + var(--subnav-h) + 8px);
+        }
+
+        .sub-title {
+            font-family: var(--font-display);
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .body-text {
+            font-size: .95rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .body-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .lead {
+            font-family: var(--font-display);
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: var(--navy-mid);
+            line-height: 1.6;
+            margin: 0 0 16px;
+            padding-left: 16px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .dash-list {
+            display: grid;
+            gap: 9px;
+        }
+
+        .dash-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: .9rem;
+            color: var(--ink-mid);
+            line-height: 1.6;
+        }
+
+        .dash-list li::before {
+            content: '—';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .dash-list strong {
+            color: var(--navy);
+        }
+
+        .source-note {
+            font-size: .78rem;
+            color: var(--grey-3);
+            line-height: 1.6;
+            margin-top: 14px;
+        }
+
+        .source-note a,
+        .text-link {
+            color: var(--accent-dark);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(26, 95, 168, .3);
+            transition: var(--transition);
+            overflow-wrap: anywhere;
+        }
+
+        .source-note a:hover,
+        .text-link:hover {
+            color: var(--navy);
+            border-bottom-color: var(--navy);
+        }
+
+        /* ══════════════════════════════════════
+       ① HEADER — unchanged from the main site
+    ══════════════════════════════════════ */
+        .site-header {
+            background: var(--white);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--grey-2);
+            box-shadow: 0 2px 10px rgba(11, 36, 71, .05);
+        }
+
+        .site-header::after {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--navy);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo-container:hover {
+            opacity: .92;
+        }
+
+        .site-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .header-link {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 9px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .header-link:hover {
+            background: var(--grey-1);
+        }
+
+        .header-cta {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+            color: var(--white);
+            background: var(--navy);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--navy);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* ══════════════════════════════════════
+       ② PAGE BANNER + BREADCRUMB (inner-page treatment)
+    ══════════════════════════════════════ */
+        .page-banner {
+            background: var(--navy);
+            padding: 34px 0 40px;
+        }
+
+        .breadcrumb ol {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+            font-size: .78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .55);
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb li {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb li+li::before {
+            content: '›';
+            color: var(--accent-light);
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, .85);
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-light);
+        }
+
+        .breadcrumb [aria-current] {
+            color: var(--white);
+        }
+
+        .page-banner .section-label {
+            color: var(--accent-light);
+        }
+
+        .page-banner .section-label::before {
+            background: var(--accent-light);
+        }
+
+        .page-banner h1.section-title {
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .page-banner .section-sub {
+            color: rgba(255, 255, 255, .72);
+        }
+
+        /* ══════════════════════════════════════
+       ③ LIBRARY SUB-NAVIGATION (sticky, in-page anchors)
+    ══════════════════════════════════════ */
+        .subnav {
+            position: sticky;
+            top: var(--header-h);
+            z-index: 900;
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-2);
+            box-shadow: 0 2px 8px rgba(11, 36, 71, .05);
+        }
+
+        .subnav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+        }
+
+        .subnav-title {
+            font-family: var(--font-display);
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            padding-right: 18px;
+            border-right: 1px solid var(--grey-2);
+            flex-shrink: 0;
+        }
+
+        .subnav-list {
+            position: relative;
+            display: flex;
+            gap: 2px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .subnav-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .subnav-list a {
+            display: block;
+            white-space: nowrap;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--ink-mid);
+            padding: 14px 12px 12px;
+            border-bottom: 3px solid transparent;
+            transition: color .2s ease, border-color .2s ease;
+        }
+
+        .subnav-list a:hover {
+            color: var(--navy);
+            border-bottom-color: var(--grey-2);
+        }
+
+        .subnav-list a.active,
+        .subnav-list a[aria-current="true"] {
+            color: var(--navy);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ══════════════════════════════════════
+       ④ ABOUT
+    ══════════════════════════════════════ */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .figures {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 0;
+            border-top: 1px solid var(--grey-2);
+            padding-top: 22px;
+            margin-top: 24px;
+        }
+
+        .figures span {
+            font-size: .84rem;
+            color: var(--ink-mid);
+            display: inline-flex;
+            align-items: baseline;
+            gap: 7px;
+            padding-right: 26px;
+            margin-right: 26px;
+            border-right: 1px solid var(--grey-2);
+        }
+
+        .figures span:last-child {
+            border-right: none;
+            padding-right: 0;
+            margin-right: 0;
+        }
+
+        .figures strong {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        /* Quick-access panel (same treatment as the "All Notices" panel) */
+        .panel {
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .panel-head {
+            padding: 16px 20px;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .panel-head h3 {
+            font-family: var(--font-display);
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .panel-item {
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .panel-item:last-child {
+            border-bottom: none;
+        }
+
+        .panel-link {
+            display: flex;
+            gap: 13px;
+            padding: 14px 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+
+        .panel-link:hover {
+            background: var(--accent-tint);
+        }
+
+        .panel-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            color: var(--navy-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .panel-link:hover .panel-icon {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .panel-title {
+            display: block;
+            font-size: .84rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.45;
+        }
+
+        .panel-meta {
+            display: block;
+            font-size: .7rem;
+            color: var(--grey-3);
+            margin-top: 3px;
+            font-weight: 600;
+        }
+
+        .view-all-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--white);
+            border-top: 1px solid var(--grey-2);
+            transition: var(--transition);
+        }
+
+        .view-all-link:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Facilities: facts table + photograph */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        .info-block {
+            border-top: 2px solid var(--navy);
+            padding-top: 20px;
+        }
+
+        .notice-strip {
+            margin-top: 28px;
+            background: var(--accent-tint);
+            border: 1px solid #d5e2f2;
+            border-left: 3px solid var(--navy);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-size: .88rem;
+            color: var(--ink);
+            line-height: 1.65;
+        }
+
+        .notice-strip strong {
+            color: var(--navy);
+        }
+
+        .photo-figure {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .photo-figure button {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: none;
+            background: var(--navy);
+            cursor: zoom-in;
+        }
+
+        .photo-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .photo-figure figcaption {
+            padding: 11px 14px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--navy);
+            border-top: 3px solid var(--navy);
+            line-height: 1.45;
+        }
+
+        /* ══════════════════════════════════════
+       TABLES — official data tables
+    ══════════════════════════════════════ */
+        .table-wrap {
+            margin-top: 28px;
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .88rem;
+        }
+
+        .data-table caption {
+            text-align: left;
+            padding: 14px 18px;
+            font-family: var(--font-display);
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--white);
+            background: var(--navy);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 18px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .data-table tbody th {
+            width: 36%;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--paper);
+        }
+
+        .data-table td {
+            color: var(--ink-mid);
+        }
+
+        .data-table tbody tr:last-child> * {
+            border-bottom: none;
+        }
+
+        /* ══════════════════════════════════════
+       ⑤ FLOOR PLANS
+    ══════════════════════════════════════ */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-top: 3px solid var(--navy);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .plan-card-head h3 {
+            font-family: var(--font-display);
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .plan-card-head span {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--grey-3);
+            white-space: nowrap;
+        }
+
+        .plan-image {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background: var(--white);
+            cursor: zoom-in;
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .plan-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            /* keep the drawing's own proportions — never crop or stretch */
+            object-fit: contain;
+        }
+
+        .plan-body {
+            padding: 16px 22px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .plan-body p {
+            font-size: .84rem;
+            color: var(--ink-mid);
+            line-height: 1.65;
+        }
+
+        .plan-body p strong {
+            color: var(--navy);
+        }
+
+        .plan-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        /* ══════════════════════════════════════
+       ⑥ LIBRARY STAFF — full profiles
+    ══════════════════════════════════════ */
+        .profile {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 36px;
+            margin-top: 28px;
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-top: 3px solid var(--navy);
+            border-radius: var(--radius-sm);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: calc(var(--header-h) + var(--subnav-h) + 8px);
+        }
+
+        .profile-photo {
+            align-self: start;
+        }
+
+        .profile-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--grey-2);
+            background: var(--grey-1);
+        }
+
+        .profile-photo figcaption {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 2px solid var(--navy);
+            font-size: .8rem;
+            color: var(--ink-mid);
+            line-height: 1.45;
+        }
+
+        .profile-photo figcaption strong {
+            display: block;
+            font-family: var(--font-display);
+            color: var(--navy);
+            font-size: .9rem;
+        }
+
+        .profile-eyebrow {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .profile h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0 20px;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            background: var(--paper);
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius-sm);
+            margin-bottom: 22px;
+            font-size: .86rem;
+        }
+
+        .facts dt,
+        .facts dd {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--grey-2);
+            line-height: 1.55;
+        }
+
+        .facts dt {
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .facts dd {
+            color: var(--ink-mid);
+        }
+
+        .facts dt:nth-last-of-type(1),
+        .facts dd:last-child {
+            border-bottom: none;
+        }
+
+        .bio-heading {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--navy-mid);
+            margin-bottom: 10px;
+        }
+
+        /* ══════════════════════════════════════
+       ⑦ DIGITAL RESOURCES + WEB-OPAC
+    ══════════════════════════════════════ */
+        .resource-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-top: 3px solid var(--navy);
+            border-radius: var(--radius-sm);
+            padding: 24px 26px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .resource-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .resource-card p {
+            font-size: .86rem;
+            color: var(--ink-mid);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        .url-line {
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--grey-3);
+            margin-top: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .cta-card {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .cta-card .eyebrow {
+            font-size: .66rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+
+        .cta-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .cta-card p {
+            font-size: .86rem;
+            color: rgba(255, 255, 255, .72);
+            margin-top: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .84rem;
+            font-weight: 700;
+            color: var(--white);
+            background: var(--navy);
+            border: 1.5px solid var(--navy);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .cta-card .btn-primary {
+            background: var(--white);
+            color: var(--navy);
+            border-color: var(--white);
+        }
+
+        .cta-card .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: .8rem;
+            color: var(--accent);
+            white-space: nowrap;
+            padding: 6px 12px;
+            border: 1px solid #d5e2f2;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-link:hover {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: var(--white);
+        }
+
+        .mail-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .86rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            word-break: break-all;
+            transition: var(--transition);
+        }
+
+        .mail-link:hover {
+            color: var(--navy);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .know-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: 700;
+            font-size: .84rem;
+            color: var(--accent);
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid transparent;
+            transition: var(--transition);
+        }
+
+        .know-more-btn .icon {
+            transition: transform .25s ease;
+        }
+
+        .know-more-btn:hover {
+            color: var(--accent-dark);
+            border-bottom-color: var(--accent-dark);
+        }
+
+        .know-more-btn:hover .icon {
+            transform: translateX(4px);
+        }
+
+        /* ══════════════════════════════════════
+       ⑧ DOWNLOADS + NOTICES — official tables
+    ══════════════════════════════════════ */
+        .notice-toolbar {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-group {
+            display: inline-flex;
+            flex-wrap: wrap;
+            border: 1px solid var(--grey-2);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .filter-btn {
+            font-family: var(--font-sans);
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--white);
+            border: none;
+            border-right: 1px solid var(--grey-2);
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:last-child {
+            border-right: none;
+        }
+
+        .filter-btn:hover {
+            background: var(--grey-1);
+        }
+
+        .filter-btn[aria-pressed="true"] {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .notice-count {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--grey-3);
+        }
+
+        .notice-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .88rem;
+        }
+
+        .notice-table caption {
+            text-align: left;
+            padding: 14px 18px;
+            font-family: var(--font-display);
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--paper);
+            border-bottom: 1px solid var(--grey-2);
+        }
+
+        .notice-table thead th {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--navy);
+            text-align: left;
+            padding: 13px 18px;
+        }
+
+        .notice-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--grey-2);
+            vertical-align: top;
+        }
+
+        .notice-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .notice-table tbody tr.notice:hover td {
+            background: var(--accent-tint);
+        }
+
+        .col-sno {
+            width: 64px;
+            font-weight: 700;
+            color: var(--grey-3);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .col-date {
+            width: 150px;
+            white-space: nowrap;
+            font-weight: 600;
+            color: var(--ink-mid);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .col-action {
+            width: 150px;
+            text-align: right;
+        }
+
+        .notice-title {
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .notice-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .tag {
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--navy-mid);
+            background: var(--grey-1);
+            border: 1px solid var(--grey-2);
+            padding: 2px 7px;
+            border-radius: 3px;
+        }
+
+        .tag-new {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: var(--white);
+        }
+
+        .file-meta {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--grey-3);
+        }
+
+        .table-gap {
+            margin-top: 32px;
+        }
+
+        /* ══════════════════════════════════════
+       ⑨ CONTACT
+    ══════════════════════════════════════ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border: 1px solid var(--grey-2);
+            border-top: 3px solid var(--navy);
+            border-radius: var(--radius-sm);
+            padding: 22px 24px;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .contact-card ul {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .contact-card ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-card li {
+            font-size: .86rem;
+            color: var(--ink-mid);
+            line-height: 1.5;
+        }
+
+        .contact-card li strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .related-links {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--grey-2);
+        }
+
+        /* ══════════════════════════════════════
+       LIGHTBOX — floor plans & photograph
+    ══════════════════════════════════════ */
+        .lightbox {
+            border: none;
+            padding: 0;
+            background: transparent;
+            max-width: min(1100px, 94vw);
+            width: 100%;
+            margin: auto;
+            overflow: visible;
+        }
+
+        .lightbox::backdrop {
+            background: rgba(7, 23, 49, .88);
+        }
+
+        .lightbox figure {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .lightbox .lb-scroll {
+            max-height: 82vh;
+            overflow: auto;
+            background: var(--white);
+        }
+
+        .lightbox img {
+            display: block;
+            max-width: 100%;
+            max-height: 82vh;
+            margin: 0 auto;
+            object-fit: contain;
+            cursor: zoom-in;
+        }
+
+        /* "Actual size" mode for reading small labels on the drawings */
+        .lightbox.zoomed img {
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
+        }
+
+        .lightbox figcaption {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 12px 16px;
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--navy);
+            border-top: 1px solid var(--grey-2);
+        }
+
+        .lightbox figcaption small {
+            font-size: .74rem;
+            color: var(--grey-3);
+            font-weight: 600;
+        }
+
+        .lb-btn {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 1px solid var(--accent-light);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .lb-btn:hover {
+            background: var(--accent);
+        }
+
+        .lb-prev {
+            left: -21px;
+            top: 40%;
+        }
+
+        .lb-next {
+            right: -21px;
+            top: 40%;
+        }
+
+        .lb-close {
+            right: -12px;
+            top: -12px;
+        }
+
+        .lb-prev[hidden],
+        .lb-next[hidden] {
+            display: none;
+        }
+
+        /* ══════════════════════════════════════
+       FOOTER — unchanged from the main site
+    ══════════════════════════════════════ */
+        .site-footer {
+            background: var(--navy-deep);
+            color: rgba(255, 255, 255, .72);
+            position: relative;
+        }
+
+        .site-footer::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-top {
+            padding: 64px 0 46px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.1fr 1.3fr;
+            gap: 44px;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .footer-logo-circle img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .footer-brand-sub {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .48);
+            letter-spacing: .03em;
+            margin-top: 2px;
+        }
+
+        .footer-about {
+            font-size: .82rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .55);
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .website-visitor-counter {
+            display: inline-flex;
+        }
+
+        .counter-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(110, 167, 221, .3);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .counter-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .counter-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(110, 167, 221, .12);
+            color: var(--accent-light);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .counter-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .counter-label {
+            font-size: .64rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .5);
+            font-weight: 700;
+        }
+
+        .counter-badge img {
+            height: 20px;
+            width: auto;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .footer-heading {
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(110, 167, 221, .22);
+            display: inline-block;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: .84rem;
+            color: rgba(255, 255, 255, .6);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '›';
+            color: var(--accent);
+            font-size: 1rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            padding-left: 5px;
+        }
+
+        .site-footer .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: .83rem;
+        }
+
+        .site-footer .contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            background: rgba(110, 167, 221, .1);
+            border: 1px solid rgba(110, 167, 221, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .68rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .site-footer .contact-text {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .6);
+            overflow-wrap: anywhere;
+        }
+
+        .site-footer .contact-text a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-map {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(110, 167, 221, .25);
+            margin-top: 8px;
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 175px;
+            border: none;
+            display: block;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
+
+        .footer-map:hover iframe {
+            filter: grayscale(0%);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: .76rem;
+            color: rgba(255, 255, 255, .42);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════ */
+        #back-top {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        #back-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-top:hover {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+
+        /* ══════════════════════════════════════
+       RESPONSIVE — same breakpoints as the main site
+    ══════════════════════════════════════ */
+        @media (max-width: 900px) {
+
+            .overview-grid,
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .profile {
+                grid-template-columns: 180px 1fr;
+                gap: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 34px;
+            }
+
+            .subnav-title {
+                display: none;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .profile-photo {
+                max-width: 240px;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+            }
+
+            .facts dt {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-pad {
+                padding: 56px 0;
+            }
+
+            .container,
+            .header-inner,
+            .subnav-inner {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .site-logo {
+                max-width: 210px;
+            }
+
+            .header-link {
+                display: none;
+            }
+
+            .header-cta {
+                padding: 9px 12px;
+                font-size: .76rem;
+            }
+
+            .subnav-list a {
+                padding: 13px 10px 11px;
+                font-size: .8rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .figures span {
+                padding-right: 16px;
+                margin-right: 16px;
+            }
+
+            .plan-card-head,
+            .plan-body {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .plan-image {
+                padding: 10px;
+            }
+
+            .cta-card,
+            .resource-card {
+                padding: 20px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 12px;
+            }
+
+            .data-table tbody th {
+                width: 40%;
+            }
+
+            .lb-prev {
+                left: 6px;
+            }
+
+            .lb-next {
+                right: 6px;
+            }
+
+            .lb-close {
+                right: 6px;
+                top: 6px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Notice / download tables → stacked rows */
+            .notice-table thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+            }
+
+            .notice-table,
+            .notice-table tbody,
+            .notice-table tr,
+            .notice-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .notice-table caption {
+                display: block;
+            }
+
+            .notice-table tr.notice {
+                padding: 14px 16px;
+                border-bottom: 1px solid var(--grey-2);
+            }
+
+            .notice-table tbody tr.notice:last-child {
+                border-bottom: none;
+            }
+
+            .notice-table td {
+                padding: 0;
+                border: none;
+                text-align: left;
+            }
+
+            .notice-table .col-sno {
+                font-size: .72rem;
+                margin-bottom: 2px;
+            }
+
+            .notice-table .col-date {
+                font-size: .74rem;
+                color: var(--grey-3);
+                margin-bottom: 4px;
+            }
+
+            .notice-table .col-action {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ══════════════════════════════════════
+       BACK TO TOP
+  ══════════════════════════════════════ -->
+    <button id="back-top" type="button" aria-label="Back to top"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ══════════════════════════════════════
+       ① HEADER — same as the main site
+  ══════════════════════════════════════ -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <div class="logo-container">
+                <a href="home.html" aria-label="GGSIPU East Delhi Campus — Home">
+                    <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/crop_landscape.png?raw=true"
+                        alt="Guru Gobind Singh Indraprastha University — East Delhi Campus" class="site-logo"
+                        width="300" height="72" loading="eager" decoding="async">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a class="header-link" target="_blank" rel="noopener" href="https://ipu.ac.in/">
+                    Main University Website
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a class="header-cta" target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">
+                    Admissions 2026
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+       ② PAGE BANNER
+  ══════════════════════════════════════ -->
+    <section class="page-banner">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="home.html">GGSIPU EDC</a></li>
+                    <li>Students</li>
+                    <li><span aria-current="page">Library</span></li>
+                </ol>
+            </nav>
+            <div class="section-label">Students</div>
+            <h1 class="section-title">East Campus Library</h1>
+            <p class="section-sub">The central library of the GGS Indraprastha University East Delhi Campus, serving
+                USAR, USDI, USAP and USMC — located on the 5th and 6th floors of C-Block.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       ③ LIBRARY SUB-NAVIGATION
+  ══════════════════════════════════════ -->
+    <nav class="subnav" id="subnav" aria-label="Library section navigation">
+        <div class="subnav-inner">
+            <span class="subnav-title">Library</span>
+            <ul class="subnav-list" id="subnavList">
+                <li><a href="#about">About</a></li>
+                <li><a href="#floor-plans">Floor Plans</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#digital-resources">Digital Resources</a></li>
+                <li><a href="#web-opac">Web-OPAC</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="#notices">Notices</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <!-- ══════════════════════════════════════
+           ④ ABOUT
+      ══════════════════════════════════════ -->
+        <section class="section-pad anchor-section" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="overview-grid">
+                    <div>
+                        <div class="section-label">About</div>
+                        <h2 class="section-title" id="about-title">About the East Campus Library</h2>
+                        <p class="lead">GGS Indraprastha University has developed a distinguished campus in East Delhi,
+                            including four academic institutions: the University School of Automation and Robotics
+                            (USAR); the University School of Design and Innovation (USDI); University School of
+                            Architecture &amp; Planning (USAP) &amp; University School of Mass Communication (USMC).</p>
+                        <p class="body-text">The central library at East Campus is established with the objective of the
+                            New National Education Policy (NEP), which strongly promotes (Science, Technology,
+                            Engineering, Architecture, Journalism), making diverse learning the foundation of every
+                            program in India. This approach aims to cultivate skills and knowledge in developing
+                            well-rounded individuals capable of providing informal and effective solutions to various
+                            problems.</p>
+                        <p class="body-text">The East Campus Library is located on the 5th and 6th floors of C-Block.
+                            The library has an average seating capacity of 125 pupils, are Wi-Fi equipped and have a
+                            designated area on the 5th floor for accessing digital materials.</p>
+                        <p class="body-text">The library operates using fully automated, cloud-based Integrated Library
+                            Management Software (Troodon) and is accessible to users from 9:00 AM to 5:30 PM, Monday
+                            through Friday.</p>
+
+                        <p class="figures">
+                            <span><strong>5th &amp; 6th</strong> Floors, C-Block</span>
+                            <span><strong>125</strong> Average seating</span>
+                            <span><strong>9:00–5:30</strong> Mon–Fri</span>
+                        </p>
+                    </div>
+
+                    <aside class="panel" aria-labelledby="quick-title">
+                        <div class="panel-head">
+                            <h3 id="quick-title">Library Quick Access</h3>
+                        </div>
+                        <ul>
+                            <li class="panel-item">
+                                <a class="panel-link" href="https://ipulib.azurewebsites.net/" target="_blank"
+                                    rel="noopener">
+                                    <span class="panel-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                                    <span>
+                                        <span class="panel-title">Web-OPAC — search the East Campus Library
+                                            catalogue</span>
+                                        <span class="panel-meta">Troodon 6.0 · ipulib.azurewebsites.net</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="panel-item">
+                                <a class="panel-link" href="https://ipu.ac.in/urc/digital.htm" target="_blank"
+                                    rel="noopener">
+                                    <span class="panel-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                                    <span>
+                                        <span class="panel-title">E-resources / Online databases (University Library,
+                                            UIRC)</span>
+                                        <span class="panel-meta">ipu.ac.in/urc/digital.htm</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="panel-item">
+                                <a class="panel-link"
+                                    href="https://drive.google.com/file/d/1yQDWKrNKGzyEAh9IOcdnZhgO_z3hbAgv/view?usp=sharing"
+                                    target="_blank" rel="noopener">
+                                    <span class="panel-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                                    <span>
+                                        <span class="panel-title">Library timings for EDC</span>
+                                        <span class="panel-meta">PDF</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="panel-item">
+                                <a class="panel-link"
+                                    href="https://drive.google.com/file/d/1S5aHhtymuRBLbhpG_YibSz-IPKpyv3Uc/view?usp=sharing"
+                                    target="_blank" rel="noopener">
+                                    <span class="panel-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                                    <span>
+                                        <span class="panel-title">Identity Card / Membership Form for Students</span>
+                                        <span class="panel-meta">PDF</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="panel-item">
+                                <a class="panel-link"
+                                    href="https://drive.google.com/file/d/12fK4cGVlRaVkxforAZNVr-x5RqXw_lQn/view?usp=sharing"
+                                    target="_blank" rel="noopener">
+                                    <span class="panel-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                                    <span>
+                                        <span class="panel-title">Procurement of Printing Books for UIRC, EDC</span>
+                                        <span class="panel-meta">16/04/2026 · PDF</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="#notices" class="view-all-link">
+                            All Library Notices
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </aside>
+                </div>
+
+                <!-- Library facilities & information -->
+                <div class="two-col" aria-labelledby="facilities-title">
+                    <div class="info-block">
+                        <h3 class="sub-title" id="facilities-title">Library Facilities &amp; Information</h3>
+                        <div class="table-wrap" style="margin-top:8px;">
+                            <table class="data-table">
+                                <caption class="visually-hidden">East Campus Library at a glance</caption>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Location</th>
+                                        <td>5th and 6th floors, C-Block, GGSIPU East Delhi Campus, Surajmal Vihar,
+                                            Delhi-110032</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Seating capacity</th>
+                                        <td>Average seating capacity of 125</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Connectivity</th>
+                                        <td>Wi-Fi equipped</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Digital access</th>
+                                        <td>Designated area on the 5th floor for accessing digital materials</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Library automation</th>
+                                        <td>Fully automated, cloud-based Integrated Library Management Software
+                                            (Troodon)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Timings</th>
+                                        <td>9:00 AM to 5:30 PM, Monday through Friday</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Schools served</th>
+                                        <td>USAR, USDI, USAP and USMC</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">E-resources</th>
+                                        <td>Managed by the main campus library (UIRC), Dwarka — <a class="text-link"
+                                                href="#digital-resources">see Digital Resources</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <figure class="photo-figure">
+                        <button type="button" data-lightbox="photos" data-caption="East Campus Library — Book Bank Section"
+                            aria-label="View larger: East Campus Library — Book Bank Section">
+                            <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/east-campus-library.jpg?raw=true"
+                                alt="Rows of book stacks under the Book Bank Section sign in the East Campus Library"
+                                width="1280" height="720" loading="lazy" decoding="async">
+                        </button>
+                        <figcaption>East Campus Library — Book Bank Section</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑤ FLOOR PLANS
+      ══════════════════════════════════════ -->
+        <section class="section-pad alt-bg anchor-section" id="floor-plans" aria-labelledby="plans-title">
+            <div class="container">
+                <div class="section-label">Floor Plans</div>
+                <h2 class="section-title" id="plans-title">Library Floor Plans</h2>
+                <p class="section-sub">Floor plans of the Central Library, East Delhi Campus, C-Block. Select a plan to
+                    view it larger; use “Open full-size image” to read the room labels and dimensions in detail.</p>
+
+                <div class="plan-grid">
+                    <article class="plan-card" aria-labelledby="plan5-title">
+                        <div class="plan-card-head">
+                            <h3 id="plan5-title">5th Floor Plan</h3>
+                            <span>Level +120.50 m</span>
+                        </div>
+                        <button type="button" class="plan-image" data-lightbox="plans"
+                            data-caption="5th Floor Plan — Central Library, East Delhi Campus"
+                            aria-label="View larger: 5th Floor Plan">
+                            <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/floor-plan-5th.jpg?raw=true"
+                                alt="5th floor plan of the Central Library, East Delhi Campus, showing the digital library cum reading room, stack areas, circulation section, property counter, librarian and officer rooms, staff rooms and toilets"
+                                width="1446" height="1679" loading="lazy" decoding="async">
+                        </button>
+                        <div class="plan-body">
+                            <p><strong>Spaces marked on the plan:</strong> Digital Library cum Reading Room, Circulation
+                                Section, two Stack Areas, Property Counter, Librarian, Officer Rooms, Staff Rooms, Staff
+                                Area, Store, lifts, staircases, and ladies', gents' and accessible toilets.</p>
+                            <div class="plan-actions">
+                                <a class="action-link" href="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/floor-plan-5th.jpg?raw=true"
+                                    target="_blank" rel="noopener">Open full-size image<span class="visually-hidden"> —
+                                        5th floor plan</span></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="plan-card" aria-labelledby="plan6-title">
+                        <div class="plan-card-head">
+                            <h3 id="plan6-title">6th Floor Plan</h3>
+                            <span>Level +124.30 m</span>
+                        </div>
+                        <button type="button" class="plan-image" data-lightbox="plans"
+                            data-caption="6th Floor Plan — Central Library, East Delhi Campus"
+                            aria-label="View larger: 6th Floor Plan">
+                            <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/floor-plan-6th.jpg?raw=true"
+                                alt="6th floor plan of the Central Library, East Delhi Campus, showing the reading room, two stack areas, meeting and conference room, property counter, officer room, staff rooms and toilets"
+                                width="1446" height="1751" loading="lazy" decoding="async">
+                        </button>
+                        <div class="plan-body">
+                            <p><strong>Spaces marked on the plan:</strong> Reading Room, two Stack Areas, Meeting /
+                                Conference Room (with projector), Property Counter, Officer Room, Staff Rooms, lifts,
+                                staircases, and ladies', gents' and accessible toilets.</p>
+                            <div class="plan-actions">
+                                <a class="action-link" href="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/floor-plan-6th.jpg?raw=true"
+                                    target="_blank" rel="noopener">Open full-size image<span class="visually-hidden"> —
+                                        6th floor plan</span></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑥ LIBRARY STAFF
+      ══════════════════════════════════════ -->
+        <section class="section-pad anchor-section" id="staff" aria-labelledby="staff-title">
+            <div class="container">
+                <div class="section-label">Library Staff</div>
+                <h2 class="section-title" id="staff-title">Library Staff</h2>
+                <p class="section-sub">East campus library is in its developmental stage and is being managed by
+                    following library staff:</p>
+
+                <!-- Dr. Amit Kumar Deval -->
+                <article class="profile" id="staff-deval" aria-labelledby="deval-name">
+                    <figure class="profile-photo">
+                        <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/amit-kumar-deval.jpg?raw=true"
+                            alt="Photograph of Dr. Amit Kumar Deval, Deputy Librarian" width="879" height="657"
+                            loading="lazy" decoding="async">
+                        <figcaption><strong>Dr. Amit Kumar Deval</strong>Deputy Librarian</figcaption>
+                    </figure>
+                    <div>
+                        <div class="profile-eyebrow">Deputy Librarian</div>
+                        <h3 id="deval-name">Dr. Amit Kumar Deval</h3>
+                        <div class="profile-links">
+                            <a class="action-link" href="https://ipu.irins.org/profile/687007" target="_blank"
+                                rel="noopener">Click for detailed profile
+                                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                        </div>
+
+                        <dl class="facts">
+                            <dt>Designation</dt>
+                            <dd>Deputy Librarian (Level 13-A)</dd>
+                            <dt>Experience</dt>
+                            <dd>25+ years of Librarianship; joined GGSIP University as Assistant Librarian in June
+                                2005</dd>
+                            <dt>Earlier services</dt>
+                            <dd>Indian Bureau of Mines, Nagpur (Ministry of Coal and Mines, Government of India);
+                                Parliament Library, New Delhi (Lok Sabha Secretariat, Government of India)</dd>
+                            <dt>Academic record</dt>
+                            <dd>First Rank Holder, School of Studies in Library and Information Science, Jiwaji
+                                University, Gwalior — Two (02) Gold Medals; PGDCA with Distinction; UGC-NET;
+                                Ph.D.</dd>
+                            <dt>Publications</dt>
+                            <dd>28 publications — 11 journal articles, 05 book chapters, 10 conference proceedings and
+                                02 books</dd>
+                            <dt>Interests</dt>
+                            <dd>Library Classification, Cataloguing, ICT application in Libraries, Value based Library
+                                resources and services</dd>
+                        </dl>
+
+                        <div class="bio-heading">Profile</div>
+                        <p class="body-text">Dr. Amit Kumar Deval is navigating through the profession of Librarianship
+                            from more than last two decades with rich and varied experience of working in top-notch
+                            institutes/organizations of Government of India. Dr. Deval rendered his valuable services
+                            in libraries of Indian Bureau of Mines, Nagpur (Ministry of Coal and Mines, Government of
+                            India), Parliament Library, New Delhi (Lok Sabha Secretariat, Government of India) and at
+                            present working as Deputy Librarian in Level 13-A. Prior joining the GGSIP University as
+                            Assistant Librarian in June 2005, Dr. Deval has cumulative experience of 25+ years of
+                            Librarianship.</p>
+                        <p class="body-text">Dr. Deval has worked in almost all the sections of libraries to hone his
+                            professional skills and also to be an expert team member of UIRC. An ardent advocate of ICT
+                            application and value based services in libraries, Dr. Deval has been instrumental in
+                            establishing an “State of the Art East Campus Library” at Surajmal Vihar Campus of GGSIP
+                            University at New Delhi. Many times, Dr. Deval, being Assistant Librarian at that point of
+                            time, also held additional charges of other Deputy Librarians assignments (Online Resources
+                            and Automation w.e.f. February 2014 to May 2015; April 2022 to September 2022); (Periodical
+                            Section w.e.f. September 2012 to October 2019); (Law Library w.e.f. April 2011 to July
+                            2016) with smiling face.</p>
+                        <p class="body-text">Dr. Deval has an outstanding academic record and First Rank Holder in
+                            School of Studies in Library and Information Science, Jiwaji University, Gwalior and
+                            accordingly honored with Two (02) Gold Medals in getting first rank in Entire SoS in LIS
+                            and the entire Faculty of Arts, Jiwaji University Gwalior. Dr. Deval also earned
+                            recognition in passing PGDCA programme with Distinction and also of qualifying UGC-NET exam
+                            before qualifying Post Graduate programme of University. Dr. Deval Ph.D. work revolve
+                            around the hot topic button of today's librarianship i.e. Comparative study of uses of
+                            Print Vs. Digital Information resources amongst the users of academic world. As a prolific
+                            scholar, Dr. Deval authored 28 publications, till date and presented his scholarly output
+                            at numerous national and international conferences and published widely in peer reviewed
+                            national and international journals. He has to his credit one authored books and one
+                            editorial books on the topic “A Practical Dose to dewey Decimal Library Classification” and
+                            “Librarianship in ICT Age”, respectively. His academic contribution includes 11 journal
+                            articles, 05 book chapters, 10 conference proceedings and 02 books.</p>
+                        <p class="body-text">Being eloquent speaker and having expertise in librarianship, Dr. Deval has
+                            been invited for Invited talks and is a leading academic voice in the field of
+                            librarianship. Dr. Deval technical and research interest includes: Library Classification,
+                            Catalouging, ICT application in Libraries, Value based Library resources and services etc.
+                            <a class="text-link" href="https://ipu.irins.org/profile/687007" target="_blank"
+                                rel="noopener">Click for detailed profile</a></p>
+                    </div>
+                </article>
+
+                <!-- Mr. Avradeep Bose -->
+                <article class="profile" id="staff-bose" aria-labelledby="bose-name">
+                    <figure class="profile-photo">
+                        <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/avradeep-bose.jpg?raw=true"
+                            alt="Photograph of Mr. Avradeep Bose, Assistant Librarian" width="1365" height="1021"
+                            loading="lazy" decoding="async">
+                        <figcaption><strong>Mr. Avradeep Bose</strong>Assistant Librarian</figcaption>
+                    </figure>
+                    <div>
+                        <div class="profile-eyebrow">Assistant Librarian</div>
+                        <h3 id="bose-name">Mr. Avradeep Bose</h3>
+                        <div class="profile-links">
+                            <a class="action-link" href="https://ipu.irins.org/profile/564989" target="_blank"
+                                rel="noopener">Click for detailed profile
+                                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                            <a class="action-link" href="mailto:bose3094@gmail.com">
+                                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                bose3094@gmail.com</a>
+                        </div>
+
+                        <dl class="facts">
+                            <dt>Designation</dt>
+                            <dd>Assistant Librarian, GGS Indraprastha University (since 2023)</dd>
+                            <dt>Experience</dt>
+                            <dd>9 years in the profession</dd>
+                            <dt>Earlier services</dt>
+                            <dd>Assistant Librarian — Dr. B R Ambedkar Institute of Technology, Port Blair; Galgotias
+                                University</dd>
+                            <dt>Qualifications</dt>
+                            <dd>5-year integrated MLIS, University of Calcutta (First Class); PGDLIM, Tata Institute of
+                                Social Sciences, Mumbai (Distinction); ‘O’ level, NIELIT (Distinction); NET; M.A.
+                                History, IGNOU</dd>
+                            <dt>Email</dt>
+                            <dd><a class="mail-link" href="mailto:bose3094@gmail.com">bose3094@gmail.com</a></dd>
+                        </dl>
+
+                        <div class="bio-heading">Profile</div>
+                        <p class="body-text">Mr. Bose has been employed in his profession for the previous 9 years. He
+                            rendered his esteemed services as Assistant Librarian at the Dr. B R Ambedkar Institute of
+                            Technology, Port Blair, and at Galgotias University, before to assuming the role of
+                            Assistant Librarian at GGS Indraprastha University in 2023.</p>
+                        <p class="body-text">Mr. Bose has a notable career in the field of library and information
+                            science. He has attained First Class honours in the comprehensive 5-year integrated MLIS
+                            program at the University of Calcutta, Kolkata. Furthermore, he has achieved distinctions
+                            in both his ‘O’ level course from NIELIT and his PGDLIM course from the Tata Institute of
+                            Social Sciences (TISS), Mumbai. He possesses NET qualification and holds a Master of Arts in
+                            History from IGNOU. <a class="text-link" href="https://ipu.irins.org/profile/564989"
+                                target="_blank" rel="noopener">Click for detailed profile</a></p>
+                    </div>
+                </article>
+
+                <!-- Md. Nasir Ali -->
+                <article class="profile" id="staff-nasir" aria-labelledby="nasir-name">
+                    <figure class="profile-photo">
+                        <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/Library/nasir-ali.png?raw=true"
+                            alt="Photograph of Md. Nasir Ali, Library Assistant" width="254" height="172"
+                            loading="lazy" decoding="async">
+                        <figcaption><strong>Md. Nasir Ali</strong>Library Assistant</figcaption>
+                    </figure>
+                    <div>
+                        <div class="profile-eyebrow">Library Assistant</div>
+                        <h3 id="nasir-name">Md. Nasir Ali</h3>
+
+                        <dl class="facts" style="margin-top:18px;">
+                            <dt>Designation</dt>
+                            <dd>Library Assistant — overseeing the Circulation Services, East Campus Library</dd>
+                            <dt>Experience</dt>
+                            <dd>Over 15 years of professional experience</dd>
+                            <dt>Earlier service</dt>
+                            <dd>Librarian, Aster Public School, Greater Noida</dd>
+                            <dt>Qualifications</dt>
+                            <dd>Master’s degree in Library and Information Science; Diploma in Computer
+                                Applications</dd>
+                        </dl>
+
+                        <div class="bio-heading">Profile</div>
+                        <p class="body-text">Md. Nasir Ali is an energetic and dedicated library professional currently
+                            overseeing the Circulation Services at the East Campus Library of GGSIPU. Alongside his
+                            primary responsibilities, he actively contributes to the management of other in-house
+                            operations, always with a positive attitude and a welcoming smile.</p>
+                        <p class="body-text">He holds a Master’s degree in Library and Information Science,
+                            complemented by a Diploma in Computer Applications. With over 15 years of professional
+                            experience, Mr. Ali brings a wealth of knowledge and expertise to his role. Before joining
+                            GGSIPU, he served as the Librarian at Aster Public School in Greater Noida.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑦ DIGITAL RESOURCES / SERVICES
+      ══════════════════════════════════════ -->
+        <section class="section-pad alt-bg anchor-section" id="digital-resources" aria-labelledby="digital-title">
+            <div class="container">
+                <div class="overview-grid">
+                    <div>
+                        <div class="section-label">Digital Resources</div>
+                        <h2 class="section-title" id="digital-title">Digital Resources / Services</h2>
+                        <p class="lead">All the e-resources/online databases either subscribed by the library or access
+                            provided by UGC-INFLIBNET center to our university are equally accessible to the users of
+                            East Campus.</p>
+                        <p class="body-text">Guru Gobind Singh Indraprastha University has a well-developed collection
+                            of e-resources/Online databases and is being managed by the main campus library (UIRC) at
+                            Dwarka, New Delhi. The below link will take you to the library web page of Dwarka
+                            campus.</p>
+                        <p class="body-text">Kindly click on the relevant e-resources/online databases to get access to
+                            the required content in digital format.</p>
+                    </div>
+
+                    <aside class="resource-card" aria-labelledby="uirc-title">
+                        <div class="profile-eyebrow">University Library, UIRC — Dwarka</div>
+                        <h3 id="uirc-title">E-resources &amp; Online Databases</h3>
+                        <p>Subscribed e-resources and UGC-INFLIBNET resources of the University, accessible to East
+                            Campus users, are listed on the University Library's digital resources page.</p>
+                        <a class="btn-primary" href="https://ipu.ac.in/urc/digital.htm" target="_blank"
+                            rel="noopener">Open Digital Resources
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                        <span class="url-line">www.ipu.ac.in/urc/digital.htm</span>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑧ WEB-OPAC
+      ══════════════════════════════════════ -->
+        <section class="section-pad anchor-section" id="web-opac" aria-labelledby="opac-title">
+            <div class="container">
+                <div class="section-label">Web-OPAC</div>
+                <h2 class="section-title" id="opac-title">Web-OPAC — Online Library Catalogue</h2>
+                <div class="divider"></div>
+
+                <div class="two-col" style="margin-top:28px;">
+                    <div>
+                        <p class="lead">Gone are the days of searching a document in a library through card
+                            catalogue. OPAC and Web-OPAC changed the traditional card catalogue system.</p>
+                        <p class="body-text">A Web-OPAC is a library catalog on the web or Internet.</p>
+                    </div>
+                    <div>
+                        <p class="body-text">OPAC/Web-OPAC helps library user to search and retrieve the required
+                            bibliographic details of a documents in a library via terminals/Internet, without the
+                            assistance of a human intermediary, at any time and from any place of the world.</p>
+                        <p class="body-text">The East Campus library catalog can be searched by clicking the below
+                            link:</p>
+                    </div>
+                </div>
+
+                <div class="cta-card">
+                    <div>
+                        <div class="eyebrow">East Campus Library Catalogue</div>
+                        <h3>Access East Campus Library Web-OPAC</h3>
+                        <p>Troodon 6.0 (ipulib.azurewebsites.net)</p>
+                    </div>
+                    <a class="btn-primary" href="https://ipulib.azurewebsites.net/" target="_blank"
+                        rel="noopener">Search the Catalogue
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑨ DOWNLOADS
+      ══════════════════════════════════════ -->
+        <section class="section-pad alt-bg anchor-section" id="downloads" aria-labelledby="downloads-title">
+            <div class="container">
+                <div class="section-label">Downloads</div>
+                <h2 class="section-title" id="downloads-title">Downloads</h2>
+                <p class="section-sub">Library forms, previous year question papers and lists of new book additions.
+                   </p>
+
+                <div class="table-wrap">
+                    <table class="notice-table">
+                        <caption>Forms &amp; Resources</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No</th>
+                                <th scope="col">Purpose / Description</th>
+                                <th scope="col" style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="notice">
+                                <td class="col-sno">1</td>
+                                <td>
+                                    <div class="notice-title">Identity Card/Membership Form for Students</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1S5aHhtymuRBLbhpG_YibSz-IPKpyv3Uc/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Student membership form</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-sno">2</td>
+                                <td>
+                                    <div class="notice-title">Library Membership Form for Teaching (Including
+                                        Contractual) and Non-Teaching Employees</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1QL-DeGPUtqy_ytqFz-g3ZpyGp_ZpYByP/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Employee membership form</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-sno">3</td>
+                                <td>
+                                    <div class="notice-title">Library Book Recommendation Form</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/18PTwRNvZY5ScRnU3JktFwg-xdnbK5PMr/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Book recommendation form</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-sno">4</td>
+                                <td>
+                                    <div class="notice-title">Previous Year Question Paper</div>
+                                    <div class="notice-tags"><span class="tag">Question Papers</span><span
+                                            class="file-meta">Folder</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/drive/folders/10SWoIe4wt7EblE_8rTyYBri0yjQgKaFZ?usp=sharing"
+                                        target="_blank" rel="noopener">Open Folder<span class="visually-hidden"> —
+                                            Previous year question papers</span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrap table-gap">
+                    <table class="notice-table">
+                        <caption>List of Addition — Books</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Month / Year</th>
+                                <th scope="col">Purpose / Description</th>
+                                <th scope="col" style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="notice">
+                                <td class="col-date">2024–2025</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2024 to 2025</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1aJIeonVmHk04s9YbIxhRI6vjf2jVf_Aa/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions 2024 to 2025</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-date">2023–2024</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2023 to 2024</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/12jtpP9l56Jvwxc7QX8G4ofEqoGii5lSM/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions 2023 to 2024</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-date">2022–2023</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2022 to 2023</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1wYUBHKGKweanM3YWiIUWAmgWcX22DGlA/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions 2022 to 2023</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-date">January 2023</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/01/2023 to 31/01/2023</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1yaGEbPKjgMhqMoSGs-Y_O0mzRk6aOkZT/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions January 2023</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-date">December 2022</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/12/2022 to 31/12/2022</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1CTxR0UdnZObi2QqZQo8FntEZnkinwqFB/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions December 2022</span></a></td>
+                            </tr>
+                            <tr class="notice">
+                                <td class="col-date">November 2022</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/11/2022 to 30/11/2022</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1kL2NqgD_j2VbEyLIlIVP9IxyISCv-Wx7/view?usp=sharing"
+                                        target="_blank" rel="noopener">View / Download<span class="visually-hidden"> —
+                                            Additions November 2022</span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="source-note">The annual lists (2022–23, 2023–24 and 2024–25) are published on the Library
+                    notice board; the monthly lists are published on the Library Downloads page.</p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑩ NOTICES
+      ══════════════════════════════════════ -->
+        <section class="section-pad anchor-section" id="notices" aria-labelledby="notices-title">
+            <div class="container">
+                <div class="section-label">Announcements</div>
+                <h2 class="section-title" id="notices-title">Library Notices</h2>
+                <p class="section-sub">Notices, forms and lists of additions published on the East Campus Library
+                    notice board, in the order they appear there (latest first).</p>
+
+                <div class="notice-toolbar">
+                    <div class="filter-group" role="group" aria-label="Filter notices by type">
+                        <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+                        <button type="button" class="filter-btn" data-filter="notice"
+                            aria-pressed="false">Notices</button>
+                        <button type="button" class="filter-btn" data-filter="form" aria-pressed="false">Forms</button>
+                        <button type="button" class="filter-btn" data-filter="additions" aria-pressed="false">Book
+                            Additions</button>
+                    </div>
+                    <span class="notice-count" id="noticeCount" aria-live="polite"></span>
+                </div>
+
+                <div class="table-wrap" style="margin-top:16px;">
+                    <table class="notice-table" id="noticeTable">
+                        <caption class="visually-hidden">Library notices with date, where published, and link to the
+                            document</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Notice / Document</th>
+                                <th scope="col" style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="notice" data-type="notice">
+                                <td class="col-date">16/04/2026</td>
+                                <td>
+                                    <div class="notice-title">Procurement of Printing Books for UIRC, EDC</div>
+                                    <div class="notice-tags"><span class="tag tag-new">Latest</span><span
+                                            class="tag">Notice</span><span class="file-meta">PDF</span>
+                                    </div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/12fK4cGVlRaVkxforAZNVr-x5RqXw_lQn/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Procurement
+                                            of Printing Books</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="notice">
+                                <td class="col-date">26/12/2023 – 25/01/2024</td>
+                                <td>
+                                    <div class="notice-title">Notice regarding Library Services during 26-12-2023 to
+                                        25-01-2024</div>
+                                    <div class="notice-tags"><span class="tag">Notice</span><span class="file-meta">PDF
+                                            · ipu.ac.in</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://ipu.ac.in/Pubinfo2024/nt221223300%20(3).pdf" target="_blank"
+                                        rel="noopener">View<span class="visually-hidden"> — Library Services notice</span></a>
+                                </td>
+                            </tr>
+                            <tr class="notice" data-type="notice">
+                                <td class="col-date">—</td>
+                                <td>
+                                    <div class="notice-title">Library timings for EDC</div>
+                                    <div class="notice-tags"><span class="tag">Notice</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1yQDWKrNKGzyEAh9IOcdnZhgO_z3hbAgv/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Library
+                                            timings</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="notice">
+                                <td class="col-date">—</td>
+                                <td>
+                                    <div class="notice-title">Library Orientation for Faculty</div>
+                                    <div class="notice-tags"><span class="tag">Notice</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1AnVpsZ-gJXqtiAb79R5aUAYNoaGVI6l2/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Library
+                                            orientation for faculty</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="form">
+                                <td class="col-date">—</td>
+                                <td>
+                                    <div class="notice-title">Identity Card/Membership Form for Students</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1S5aHhtymuRBLbhpG_YibSz-IPKpyv3Uc/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Student
+                                            membership form</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="form">
+                                <td class="col-date">—</td>
+                                <td>
+                                    <div class="notice-title">Library Membership Form for Teaching (Including
+                                        Contractual) and Non-Teaching Employees</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1QL-DeGPUtqy_ytqFz-g3ZpyGp_ZpYByP/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Employee
+                                            membership form</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="form">
+                                <td class="col-date">—</td>
+                                <td>
+                                    <div class="notice-title">Library Book Recommendation Form</div>
+                                    <div class="notice-tags"><span class="tag">Form</span><span class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/18PTwRNvZY5ScRnU3JktFwg-xdnbK5PMr/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Book
+                                            recommendation form</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">2024–2025</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2024 to 2025</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1aJIeonVmHk04s9YbIxhRI6vjf2jVf_Aa/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            2024 to 2025</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">2023–2024</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2023 to 2024</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/12jtpP9l56Jvwxc7QX8G4ofEqoGii5lSM/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            2023 to 2024</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">2022–2023</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 2022 to 2023</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1wYUBHKGKweanM3YWiIUWAmgWcX22DGlA/view?usp=drive_link"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            2022 to 2023</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">January 2023</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/01/2023 to 31/01/2023</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1yaGEbPKjgMhqMoSGs-Y_O0mzRk6aOkZT/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            January 2023</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">December 2022</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/12/2022 to 31/12/2022</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1CTxR0UdnZObi2QqZQo8FntEZnkinwqFB/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            December 2022</span></a></td>
+                            </tr>
+                            <tr class="notice" data-type="additions">
+                                <td class="col-date">November 2022</td>
+                                <td>
+                                    <div class="notice-title">List Of Additions from 01/11/2022 to 30/11/2022</div>
+                                    <div class="notice-tags"><span class="tag">Book Additions</span><span
+                                            class="file-meta">PDF</span></div>
+                                </td>
+                                <td class="col-action"><a class="action-link"
+                                        href="https://drive.google.com/file/d/1kL2NqgD_j2VbEyLIlIVP9IxyISCv-Wx7/view?usp=sharing"
+                                        target="_blank" rel="noopener">View<span class="visually-hidden"> — Additions
+                                            November 2022</span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="source-note">“—” indicates that no date is given for the item on the official notice board.
+                    For University-wide notices, see <a href="https://ipu.ac.in/notices.php" target="_blank"
+                        rel="noopener">ipu.ac.in/notices.php</a>.</p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+           ⑪ CONTACT & CAMPUS INFORMATION
+      ══════════════════════════════════════ -->
+        <section class="section-pad alt-bg anchor-section" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title" id="contact-title">Library Contact &amp; Campus Information</h2>
+                <div class="divider"></div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>East Campus Library</h3>
+                        <ul>
+                            <li><strong>Location:</strong> 5th &amp; 6th floors, C-Block</li>
+                            <li><strong>Address:</strong> Guru Gobind Singh Indraprastha University, East Delhi Campus,
+                                Surajmal Vihar, Delhi-110032</li>
+                            <li><strong>Timings:</strong> 9:00 AM to 5:30 PM, Monday through Friday</li>
+                        </ul>
+                        <a class="know-more-btn"
+                            href="https://drive.google.com/file/d/1yQDWKrNKGzyEAh9IOcdnZhgO_z3hbAgv/view?usp=sharing"
+                            target="_blank" rel="noopener">Library timings notice
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Library Staff</h3>
+                        <ul>
+                            <li><strong>Dr. Amit Kumar Deval</strong> — Deputy Librarian</li>
+                            <li><strong>Mr. Avradeep Bose</strong> — Assistant Librarian<br>
+                                <a class="mail-link" href="mailto:bose3094@gmail.com">bose3094@gmail.com</a></li>
+                            <li><strong>Md. Nasir Ali</strong> — Library Assistant (Circulation Services)</li>
+                        </ul>
+                        <a class="know-more-btn" href="#staff">Staff profiles
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                    <div class="contact-card">
+                        <h3>University Library (UIRC), Dwarka</h3>
+                        <ul>
+                            <li>The University's e-resources and online databases are managed by the main campus
+                                library (UIRC) at Dwarka, New Delhi.</li>
+                        </ul>
+                        <a class="know-more-btn" href="https://ipu.ac.in/urc/digital.htm" target="_blank"
+                            rel="noopener">UIRC digital resources
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="related-links">
+                    <a class="know-more-btn" href="https://ipulib.azurewebsites.net/" target="_blank"
+                        rel="noopener">Web-OPAC (Troodon)
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    <a class="know-more-btn"
+                        href="https://drive.google.com/drive/folders/10SWoIe4wt7EblE_8rTyYBri0yjQgKaFZ?usp=sharing"
+                        target="_blank" rel="noopener">Previous Year Question Papers
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    <a class="know-more-btn" href="https://ipu.ac.in/" target="_blank" rel="noopener">Main University
+                        Website
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox for floor plans and photographs -->
+        <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+            <figure>
+                <div class="lb-scroll" id="lbScroll">
+                    <img id="lightboxImg" alt="">
+                </div>
+                <figcaption>
+                    <span id="lightboxCap"></span>
+                    <small>Click the image to toggle actual size</small>
+                </figcaption>
+            </figure>
+            <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Next image">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Close">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </dialog>
+
+    </main>
+
+    <!-- ══════════════════════════════════════
+       FOOTER — same as the main site
+  ══════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+                        <div class="footer-logo-wrap">
+                            <div class="footer-logo-circle">
+                                <img src="https://github.com/EDCWEBSITE/EDC-Website/blob/main/Img/GGSIU_logo.svg.png?raw=true"
+                                    alt="GGSIPU Logo" loading="lazy" decoding="async" width="43" height="43">
+                            </div>
+                            <div>
+                                <div class="footer-brand-name">GGSIPU<br>East Delhi Campus</div>
+                                <div class="footer-brand-sub">Surajmal Vihar, Delhi-110032</div>
+                            </div>
+                        </div>
+
+                        <p class="footer-about">
+                            Home to four specialised university schools driving excellence in automation, design,
+                            architecture, and media — shaping tomorrow's leaders.
+                        </p>
+
+                        <div class="website-visitor-counter">
+                            <div class="counter-card">
+                                <div class="counter-icon">
+                                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-label">Total Visitors</span>
+                                    <div class="counter-badge">
+                                        <img src="https://hitwebcounter.com/counter/counter.php?page=8661208&style=0005&nbdigits=6&type=page&initCount=210820"
+                                            title="Visitor counter" alt="Visitor counter" loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Quick Links</div>
+                        <ul class="footer-links">
+                            <li><a target="_blank" rel="noopener" href="https://sites.google.com/view/ggsipuedc/home">About East Delhi Campus</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://sites.google.com/view/ggsipuedc/home">Schools</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/">Main University Website</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/adm2026/adm2026main.php">Admissions</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://sites.google.com/view/ggsipuedc/campus-life/edc-photo-gallery">Photo Gallery</a></li>
+                            <li><a target="_blank" rel="noopener" href="https://ipu.ac.in/notices.php">Notices</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Contact Us</div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="contact-text">Guru Gobind Singh Indraprastha University,<br>East Delhi Campus,<br>Surajmal Vihar, Delhi-110032</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="contact-text"><a href="mailto:directorincharge_edc@ipu.ac.in">directorincharge_edc@ipu.ac.in</a></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-heading">Find Us</div>
+                        <div class="footer-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.761895697669!2d77.293444!3d28.641667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf5378f7f5b51%3A0xa234358e0a28f443!2sGuru%20Gobind%20Singh%20Indraprastha%20University%20(East%20Delhi%20Campus)!5e0!3m2!1sen!2sin!4v1711000000000!5m2!1sen!2sin"
+                                width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="GGSIPU East Delhi Campus map"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    © 2026 Guru Gobind Singh Indraprastha University, East Delhi Campus. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+       SCRIPTS — vanilla, progressive enhancement only
+  ══════════════════════════════════════ -->
+    <script>
+        /* Keep the sub-nav docked exactly under the sticky header */
+        (function syncStickyOffsets() {
+            const header = document.getElementById('siteHeader');
+            const subnav = document.getElementById('subnav');
+            const root = document.documentElement;
+            function update() {
+                root.style.setProperty('--header-h', header.offsetHeight + 'px');
+                root.style.setProperty('--subnav-h', subnav.offsetHeight + 'px');
+            }
+            update();
+            window.addEventListener('resize', update, { passive: true });
+            window.addEventListener('load', update);
+        })();
+
+        /* Scroll-spy: highlight the sub-nav item for the section in view */
+        (function initScrollSpy() {
+            const links = Array.from(document.querySelectorAll('#subnavList a'));
+            const list = document.getElementById('subnavList');
+            const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+            let current = null;
+
+            function setActive(id) {
+                if (id === current) return;
+                current = id;
+                links.forEach(a => {
+                    const on = a.getAttribute('href') === '#' + id;
+                    a.classList.toggle('active', on);
+                    if (on) {
+                        a.setAttribute('aria-current', 'true');
+                        // keep the active tab visible in the horizontally scrolling bar
+                        const l = a.offsetLeft, r = l + a.offsetWidth;
+                        if (l < list.scrollLeft || r > list.scrollLeft + list.clientWidth) {
+                            list.scrollTo({ left: l - 16, behavior: 'smooth' });
+                        }
+                    } else {
+                        a.removeAttribute('aria-current');
+                    }
+                });
+            }
+
+            function onScroll() {
+                const offset = document.getElementById('siteHeader').offsetHeight +
+                    document.getElementById('subnav').offsetHeight + 24;
+                let id = sections[0].id;
+                for (const s of sections) {
+                    if (s.getBoundingClientRect().top - offset <= 0) id = s.id;
+                }
+                // at the very bottom, the last section is active
+                if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
+                    id = sections[sections.length - 1].id;
+                }
+                setActive(id);
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('load', onScroll);
+            onScroll();
+        })();
+
+        /* Notice filter (All / Notices / Forms / Book Additions) */
+        (function initNoticeFilter() {
+            const table = document.getElementById('noticeTable');
+            const buttons = document.querySelectorAll('.notice-toolbar .filter-btn');
+            const count = document.getElementById('noticeCount');
+
+            function apply(filter) {
+                let shown = 0;
+                table.querySelectorAll('tr.notice').forEach(tr => {
+                    const show = filter === 'all' || tr.dataset.type === filter;
+                    tr.hidden = !show;
+                    if (show) shown++;
+                });
+                count.textContent = shown + (shown === 1 ? ' item' : ' items');
+            }
+
+            buttons.forEach(btn => btn.addEventListener('click', () => {
+                buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+                apply(btn.dataset.filter);
+            }));
+            apply('all');
+        })();
+
+
+        /* Lightbox — floor plans and photograph (native <dialog>) */
+        (function initLightbox() {
+            const box = document.getElementById('lightbox');
+            const boxImg = document.getElementById('lightboxImg');
+            const boxCap = document.getElementById('lightboxCap');
+            const scroller = document.getElementById('lbScroll');
+            const prev = document.getElementById('lbPrev');
+            const next = document.getElementById('lbNext');
+            let group = [], current = 0;
+
+            function show(i) {
+                current = i;
+                const btn = group[i];
+                const img = btn.querySelector('img');
+                box.classList.remove('zoomed');
+                boxImg.src = img.currentSrc || img.src;
+                boxImg.alt = img.alt;
+                boxCap.textContent = btn.dataset.caption;
+                scroller.scrollTop = 0;
+                scroller.scrollLeft = 0;
+            }
+
+            document.querySelectorAll('[data-lightbox]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const img = btn.querySelector('img');
+                    if (typeof box.showModal !== 'function') {
+                        window.open(img.currentSrc || img.src, '_blank', 'noopener');
+                        return;
+                    }
+                    group = Array.from(document.querySelectorAll('[data-lightbox="' + btn.dataset.lightbox + '"]'));
+                    prev.hidden = next.hidden = group.length < 2;
+                    show(group.indexOf(btn));
+                    box.showModal();
+                });
+            });
+
+            function step(d) {
+                if (group.length < 2) return;
+                show((current + d + group.length) % group.length);
+            }
+            boxImg.addEventListener('click', () => box.classList.toggle('zoomed'));
+            prev.addEventListener('click', () => step(-1));
+            next.addEventListener('click', () => step(1));
+            document.getElementById('lbClose').addEventListener('click', () => box.close());
+            box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+            box.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') step(1);
+                if (e.key === 'ArrowLeft') step(-1);
+            });
+        })();
+
+        /* Back to top */
+        (function initBackTop() {
+            const backTop = document.getElementById('back-top');
+            window.addEventListener('scroll', () => {
+                backTop.classList.toggle('visible', window.scrollY > 480);
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+
+</html>
