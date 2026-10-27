@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>USAP Journal / Seminar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body { font-family: 'Public Sans', sans-serif; }
+    /* nav pipes + underline */
+    .nav-wrap { background:#0b86a3; }             /* teal bar like screenshot */
+    .nav-link { color:#eaf6fb; padding:10px 12px; position:relative; }
+    .nav-link + .nav-link { border-left: 1px solid rgba(255,255,255,0.4); }
+    .nav-link:hover { color:white; }
+    .nav-link.active::after {
+      content:'';
+      position:absolute; left:12px; right:12px; bottom:-6px;
+      height:3px; background:#ffa342; border-radius:2px; /* orange underline */
+    }
+    /* thin line below the menu like screenshot */
+    .nav-underline { height:2px; background:rgba(255,255,255,0.35); }
+
+    /* simple section show/hide for single-file use */
+    .section { display:none; }
+    .section.show { display:block; }
+
+    /* smooth iframe card look for embeds */
+    .embed-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:0; overflow:hidden; }
+    .embed-card iframe { width:100%; height:70vh; border:0; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- Header (kept from your portal) -->
+  <header class="bg-white shadow-md border-b border-blue-200">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/GGSIU_logo.svg/1200px-GGSIU_logo.svg.png" alt="USAR Logo" class="h-14" />
+        <div>
+          <h1 class="text-2xl font-bold text-blue-900">University School of Architecture & Planning</h1>
+          <p class="text-sm text-gray-600">Guru Gobind Singh Indraprastha University, East Delhi Campus</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="nav-wrap">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap items-center space-x-0 text-sm">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#aims-scope">Aims and Scope</a>
+        <a class="nav-link" href="#guidelines">Guidelines for Authors</a>
+        <a class="nav-link" href="#cfp">Call for Papers</a>
+        <a class="nav-link" href="#submit">Article Submission System</a>
+        <a class="nav-link" href="#editorial-board">Editorial Board</a>
+        <a class="nav-link" href="#archives">Archives</a>
+        <a class="nav-link" href="#conferences">Conferences</a>
+        <a class="nav-link" href="#ethics">Ethics and Policy</a>
+        <a class="nav-link" href="#download">Download</a>
+        <a class="nav-link" href="#membership">Membership</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="nav-underline"></div>
+  </nav>
+
+  <!-- Content -->
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- Home -->
+    <section id="home" class="section show">
+  <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">USAP JOURNAL (Print / Online)</h2>
+
+  <!-- Published By (matches your screenshot) -->
+  <div class="bg-white shadow rounded-xl p-6 border border-gray-200 mb-6">
+    <h3 class="text-xl font-semibold text-center mb-2">Published By</h3>
+    <div class="text-center text-gray-800 leading-7">
+      <div class="font-semibold">Guru Gobind Singh Indraprastha University</div>
+      <div>East Delhi Campus</div>
+      <div>Surajmal Vihar</div>
+      <div>New Delhi – 110032</div>
+    </div>
+  </div>
+
+  <!-- Journal Particulars (for ISSN page compliance) -->
+  <div class="bg-white shadow rounded-xl p-6 border border-blue-100">
+    <h3 class="text-lg font-semibold text-blue-900 mb-3">Journal Particulars</h3>
+    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-800">
+      <div><span class="font-semibold">Title:</span> USAP Journal</div>
+      <div><span class="font-semibold">Frequency:</span> Annual</div>
+      <div><span class="font-semibold">Mode:</span> Print / Online</div>
+      <div><span class="font-semibold">Starting Year:</span> 2025</div>
+      <div><span class="font-semibold">Subject:</span> Architecture, Planning & Built Environment</div>
+      <div><span class="font-semibold">Language:</span> English</div>
+      <div class="md:col-span-2"><span class="font-semibold">Publisher Name & Address:</span> Guru Gobind Singh Indraprastha University, East Delhi Campus, Surajmal Vihar, New Delhi – 110032</div>
+      <div class="md:col-span-2"><span class="font-semibold">Editorial Email:</span> <a class="text-blue-700 hover:underline" href="mailto:usap@ipu.ac.in">usap@ipu.ac.in</a>, <a class="text-blue-700 hover:underline" href="mailto:lugani@ipu.ac.in">lugani@ipu.ac.in</a></div>
+      <div><span class="font-semibold">Phone:</span> 8130822966</div>
+      <!-- add ISSN fields once issued -->
+      <div><span class="font-semibold">ISSN (Print):</span> —</div>
+      <div><span class="font-semibold">ISSN (Online):</span> —</div>
+    </div>
+    <p class="text-sm text-gray-600 mt-3">Aims & Scope, Author Guidelines, and Archives are available via the top navigation.</p>
+  </div>
+</section>
+
+
+    <!-- Aims & Scope -->
+    <section id="aims-scope" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Aims & Scope</h2>
+      <ul class="list-disc ml-6 text-gray-700 space-y-1">
+        <li>Automation, Robotics & Control</li>
+        <li>AI/ML, CV, NLP, and Data-Centric Engineering</li>
+        <li>Embedded & CPS, IoT/IIoT, Edge/Fog/Cloud</li>
+        <li>Human–Robot Interaction, Healthcare Tech, Sustainability</li>
+      </ul>
+    </section>
+
+    <!-- Guidelines -->
+    <section id="guidelines" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Guidelines for Authors</h2>
+      <ol class="list-decimal ml-6 text-gray-700 space-y-1">
+        <li>Manuscript in PDF, anonymized if double-blind.</li>
+        <li>Template: IEEE single-column or provided DOC/PDF.</li>
+        <li>Plagiarism & ethics compliance required.</li>
+      </ol>
+      <!-- Add template links in Download tab -->
+    </section>
+
+    <!-- Call for Papers -->
+    <section id="cfp" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Call for Papers</h2>
+      <p class="text-gray-700 mb-2">Theme: “Technology & Robotics in Indian Culture and Festivals” (example)</p>
+      <ul class="list-disc ml-6 text-gray-700 space-y-1">
+        <li>Submission deadline: TBD</li>
+        <li>Notification & camera-ready: TBD</li>
+      </ul>
+    </section>
+
+    <!-- Submit (embed Apps Script web app) -->
+    <section id="submit" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Article Submission System</h2>
+      <div class="embed-card">
+        <!-- If you host submit inside the same Apps Script app, you can also use ?view=submit -->
+        <iframe src="SUBMIT_WEBAPP_URL" referrerpolicy="no-referrer-when-downgrade" allow="clipboard-write"></iframe>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">Only PDF (≤20 MB). Title, authors, email, abstract required.</p>
+    </section>
+
+    <!-- Editorial Board -->
+    <section id="editorial-board" class="section">
+  <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-6">Editorial Board</h2>
+
+  <!-- Chief Editor -->
+  <h3 class="text-xl font-semibold text-blue-900 mb-3">Chief Editor</h3>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Prof (Dr.) Neeraja Lugani Sethi</div>
+      <div class="text-sm text-gray-700">Professor and Dean</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:lugani@ipu.ac.in">lugani@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:8130822966">8130822966</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editors -->
+  <h3 class="text-xl font-semibold text-blue-900 mb-3">Editors</h3>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Dr. Charu Nangia</div>
+      <div class="text-sm text-gray-700">Associate Professor</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:drcharunangia@ipu.ac.in">drcharunangia@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:9810156473">9810156473</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Ar. Avtar Singh</div>
+      <div class="text-sm text-gray-700">Associate Professor</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:avtar@ipu.ac.in">avtar@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:9811386940">9811386940</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Ar. Akhil Dass</div>
+      <div class="text-sm text-gray-700">Assistant Professor</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:akhildass@ipu.ac.in">akhildass@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:9810042871">9810042871</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Dr. Bipasha Kumar</div>
+      <div class="text-sm text-gray-700">Associate Professor</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:drbipasha@ipu.ac.in">drbipasha@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:9818686706">9818686706</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Ar. Sajida Shahnum</div>
+      <div class="text-sm text-gray-700">Assistant Professor</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:sajidashahnum@ipu.ac.in">sajidashahnum@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:8630615132">8630615132</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Ar. Parvinder Kaur Marwah</div>
+      <div class="text-sm text-gray-700">Research Scholar</div>
+      <div class="text-sm text-gray-600 mt-1">
+        University School of Architecture and Planning (USAP),<br>
+        Guru Gobind Singh Indraprastha University,<br>
+        East Delhi Campus, Surajmal Vihar, New Delhi – 110032
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:pavinder.00517390024@ipu.ac.in">pavinder.00517390024@ipu.ac.in</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:9818305922">9818305922</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- International Editors -->
+  <h3 class="text-xl font-semibold text-blue-900 mb-3">International Editors</h3>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Prof. Klimis</div>
+      <div class="text-sm text-gray-700">Technical University of Crete (TUC), Greece</div>
+      <div class="text-sm text-gray-600 mt-1">Editorial Assistant</div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:kaslanidis@tuc.gr">kaslanidis@tuc.gr</a><br>
+        Telephone: <a class="text-blue-700 hover:underline" href="tel:+306973027068">+30 6973027068</a>
+      </div>
+    </div>
+
+    <div class="bg-white shadow rounded-xl p-5">
+      <div class="font-semibold text-blue-900">Prof. Gulherme</div>
+      <div class="text-sm text-gray-700">Dean, Faculty of Architecture & Urbanism</div>
+      <div class="text-sm text-gray-600 mt-1">
+        Federal University of Rio De Janerio, Brazil
+      </div>
+      <div class="text-sm mt-3">
+        Email: <a class="text-blue-700 hover:underline" href="mailto:glassance@gmail.com">glassance@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Archives (embed Accepted list) -->
+    <section id="archives" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Archives</h2>
+      <div class="embed-card">
+        <iframe src="ARCHIVES_WEBAPP_URL" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">Search by title, authors, abstract, or keywords.</p>
+    </section>
+
+    <!-- Conferences -->
+    <section id="conferences" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Conferences</h2>
+      <ul class="list-disc ml-6 text-gray-700 space-y-1">
+        <li>Upcoming: …</li>
+        <li>Past: …</li>
+      </ul>
+    </section>
+
+    <!-- Ethics & Policy -->
+    <section id="ethics" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Ethics & Policy</h2>
+      <ul class="list-disc ml-6 text-gray-700 space-y-1">
+        <li>Authorship & contributions</li>
+        <li>Conflicts of interest</li>
+        <li>Data availability & reproducibility</li>
+        <li>Plagiarism screening & misconduct</li>
+      </ul>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Download</h2>
+      <ul class="list-disc ml-6 text-gray-700 space-y-1">
+        <li><a class="text-blue-700 hover:underline" href="#" target="_blank">Author Template (DOCX)</a></li>
+        <li><a class="text-blue-700 hover:underline" href="#" target="_blank">Copyright/Consent Form (PDF)</a></li>
+      </ul>
+    </section>
+
+    <!-- Membership -->
+    <section id="membership" class="section">
+      <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Membership</h2>
+      <p class="text-gray-700">Eligibility, benefits, and registration (Google Form link).</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+  <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-4">Contact</h2>
+  <div class="bg-white shadow rounded-xl p-6 border border-gray-200">
+    <div class="text-gray-800 leading-7">
+      <div class="font-semibold">University School of Architecture & Planning (USAP)</div>
+      <div>Guru Gobind Singh Indraprastha University</div>
+      <div>East Delhi Campus, Surajmal Vihar</div>
+      <div>New Delhi – 110032</div>
+      <div class="mt-3"><span class="font-semibold">Email:</span> <a class="text-blue-700 hover:underline" href="mailto:usap@ipu.ac.in">usap@ipu.ac.in</a>, <a class="text-blue-700 hover:underline" href="mailto:lugani@ipu.ac.in">lugani@ipu.ac.in</a></div>
+      <div><span class="font-semibold">Phone:</span> 8130822966</div>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- Footer (kept from your portal) -->
+  <footer class="bg-gray-900 text-white mt-16">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <h3 class="text-lg font-bold mb-2">USAP Journal</h3>
+        <p>Printed and hosted by University School of Architecture & Planning (USAP), GGSIPU – East Delhi Campus.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-2">Quick Links</h3>
+        <ul class="space-y-1">
+          <li><a href="https://sites.google.com/view/ggsipuedc" target="_blank" class="hover:underline">GGSIPU EDC Website</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bg-gray-800 text-center text-sm py-3">
+      © Designed & Developed by USAP, GGSIPU
+    </div>
+  </footer>
+
+  <script>
+    // Single-file router: switch visible section based on hash
+    const routes = [
+      'home','aims-scope','guidelines','cfp','submit','editorial-board',
+      'archives','conferences','ethics','download','membership','contact'
+    ];
+    function setActiveFromHash(){
+      const hash = (location.hash || '#home').replace('#','');
+      const target = routes.includes(hash) ? hash : 'home';
+      // show/hide sections
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+      document.getElementById(target).classList.add('show');
+      // active nav styling
+      document.querySelectorAll('.nav-link').forEach(a=>{
+        const isActive = a.getAttribute('href') === '#'+target;
+        a.classList.toggle('active', isActive);
+      });
+    }
+    window.addEventListener('hashchange', setActiveFromHash);
+    setActiveFromHash();
+  </script>
+  <template id="coming-soon-template">
+  <div class="bg-white border border-gray-200 rounded-xl p-8 text-center shadow">
+    <div class="mx-auto mb-3 w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-700" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm1-14V6h-2v4H7v2h4v4h2v-4h4v-2h-4z"/>
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold text-blue-900 mb-1">Coming Soon</h3>
+    <p class="text-gray-700">This page is under preparation. Please check back shortly.</p>
+  </div>
+</template>
+<script>
+  // IDs of sections that should show "Coming Soon"
+  const comingSoonSections = [
+    'aims-scope','guidelines','cfp','submit','archives',
+    'conferences','ethics','download','membership'
+  ];
+  const tmpl = document.getElementById('coming-soon-template');
+  comingSoonSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('section');            // ensure section class stays
+    el.innerHTML = tmpl.innerHTML;          // replace content with Coming Soon card
+  });
+
+  // keep your existing router working (if you already have setActiveFromHash, this is not needed)
+  if (typeof setActiveFromHash === 'function') {
+    setActiveFromHash();
+  } else {
+    // minimal router fallback
+    const routes = ['home','editorial-board','contact', ...comingSoonSections];
+    function setActiveFromHash(){
+      const hash = (location.hash || '#home').slice(1);
+      const target = routes.includes(hash) ? hash : 'home';
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
+      document.getElementById(target)?.classList.add('show');
+      document.querySelectorAll('.nav-link').forEach(a=>{
+        a.classList.toggle('active', a.getAttribute('href') === '#'+target);
+      });
+    }
+    window.addEventListener('hashchange', setActiveFromHash);
+    setActiveFromHash();
+  }
+</script>
+</body>
+</html>
